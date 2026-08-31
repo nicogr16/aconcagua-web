@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Preguntas Frecuentes — Aconcagua</title>
+<link rel="icon" type="image/png" href="img/brand/favicon.png">
+<meta property="og:title" content="Preguntas Frecuentes — Aconcagua">
+<meta property="og:description" content="Todo lo que necesitás saber antes de consultar tu par Aconcagua.">
+<meta property="og:image" content="img/campania/hero-cordillera.jpg">
+<meta property="og:type" content="website">
+<style>
+:root{
+  --paper:#F2EEE4;
+  --paper-raised:#E7E0D0;
+  --line:#D6CDB8;
+  --line-strong:#C2B79D;
+  --outline:#A99C82;
+  --accent:#616A4D;
+  --accent-soft:#4A5239;
+  --ink-soft:#59554A;
+  --ink:#2B2620;
+  --accent-warm:#7C5F30;
+  --accent-water:#4F6E76;
+  --shadow:0 14px 34px -14px rgba(43,38,32,.28);
+  --shadow-sm:0 6px 16px -8px rgba(43,38,32,.22);
+  --ease:cubic-bezier(.22,1,.36,1);
+  font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  background-color:var(--paper);color:var(--ink);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+.container{max-width:1240px;margin:0 auto;padding:0 32px;}
+html{scroll-behavior:smooth;}
+::selection{background:var(--accent);color:var(--paper);}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+.js-ready .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease), transform .7s var(--ease);}
+.reveal.in{opacity:1;transform:none;}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  .js-ready .reveal{opacity:1;transform:none;transition:none;}
+}
+
+/* Header (shared) */
+header{position:sticky;top:0;z-index:50;background:rgba(242,238,228,0.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line-strong);transition:box-shadow .3s var(--ease);}
+header.scrolled{box-shadow:var(--shadow-sm);}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0;transition:padding .3s var(--ease);}
+header.scrolled .nav{padding:13px 0;}
+.topbar{background:var(--paper-raised);text-align:center;font-size:12px;letter-spacing:.08em;padding:8px 0;color:var(--ink-soft);border-bottom:1px solid var(--line);}
+.topbar a{color:var(--ink);font-weight:700;text-decoration:underline;text-underline-offset:2px;}
+.logo{display:flex;align-items:center;gap:12px;transition:opacity .2s;}
+.logo:hover{opacity:.8;}
+.logo img{width:38px;height:38px;}
+.logo-text{font-family:Georgia,'Times New Roman',serif;font-size:22px;letter-spacing:.12em;font-weight:700;color:var(--ink);}
+.logo-sub{display:block;font-family:'Inter',sans-serif;font-size:9px;letter-spacing:.35em;color:var(--accent-warm);font-weight:500;margin-top:2px;}
+.nav-links{display:flex;gap:34px;font-size:14px;letter-spacing:.03em;}
+.nav-links a{color:var(--ink-soft);transition:color .2s;}
+.nav-links a:hover, .nav-links a.current{color:var(--ink);}
+.nav-actions{display:flex;align-items:center;gap:22px;font-size:14px;}
+.nav-cta{display:flex;align-items:center;gap:8px;background:var(--accent);color:var(--paper);padding:10px 20px;border-radius:999px;font-size:13px;font-weight:600;letter-spacing:.03em;box-shadow:var(--shadow-sm);transition:transform .3s var(--ease), box-shadow .3s var(--ease), background .3s var(--ease);}
+.nav-cta:hover{background:var(--accent-soft);transform:translateY(-2px);box-shadow:var(--shadow);}
+.nav-cta:active{transform:translateY(0) scale(.97);}
+.nav-burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;border:1px solid var(--line-strong);border-radius:8px;background:transparent;cursor:pointer;}
+.nav-burger span{display:block;width:18px;height:2px;background:var(--ink);margin:0 auto;transition:transform .3s var(--ease), opacity .3s var(--ease);}
+.nav-burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-burger[aria-expanded="true"] span:nth-child(2){opacity:0;}
+.nav-burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.mobile-menu{display:none;}
+
+/* Page header */
+.page-hero{
+  position:relative;overflow:hidden;
+  padding:72px 0 48px;border-bottom:1px solid var(--line);
+  background:
+    linear-gradient(120deg, var(--paper-raised) 0%, var(--paper) 55%),
+    repeating-linear-gradient(115deg, transparent 0 64px, var(--line) 64px 65px);
+}
+.page-hero::before{
+  content:"";position:absolute;right:-6%;top:-18%;width:520px;height:520px;
+  background-image:url('img/brand/isotipo-oliva.png');background-repeat:no-repeat;background-size:contain;
+  opacity:.1;transform:rotate(6deg);pointer-events:none;
+}
+.page-hero .container{position:relative;z-index:1;}
+.section-eyebrow{font-size:12px;letter-spacing:.3em;color:var(--accent-warm);font-weight:600;margin-bottom:14px;}
+.page-hero h1{font-family:Georgia,serif;font-size:clamp(32px,4.2vw,46px);letter-spacing:-.01em;color:var(--ink);font-weight:700;margin-bottom:16px;}
+.page-hero p{color:var(--ink-soft);font-size:15.5px;line-height:1.6;max-width:56ch;}
+@media(max-width:760px){.page-hero::before{width:340px;height:340px;right:-15%;}}
+
+/* FAQ layout */
+.faq-wrap{padding:64px 0 96px;display:grid;grid-template-columns:220px 1fr;gap:56px;align-items:start;}
+.faq-nav{position:sticky;top:100px;display:flex;flex-direction:column;gap:4px;}
+.faq-nav a{font-size:13px;color:var(--ink-soft);padding:9px 12px;border-radius:8px;transition:background .2s, color .2s;}
+.faq-nav a:hover{color:var(--ink);background:var(--paper-raised);}
+
+.faq-group{margin-bottom:52px;scroll-margin-top:96px;}
+.faq-group-title{font-family:Georgia,serif;font-size:22px;color:var(--ink);font-weight:700;margin-bottom:6px;}
+.faq-group-sub{font-size:13px;color:var(--ink-soft);margin-bottom:20px;}
+
+details.faq-item{border:1px solid var(--line);background:var(--paper-raised);border-radius:12px;margin-bottom:12px;overflow:hidden;transition:border-color .25s var(--ease);}
+details.faq-item[open]{border-color:var(--accent);}
+details.faq-item summary{
+  list-style:none;cursor:pointer;padding:18px 20px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  font-size:15px;font-weight:600;color:var(--ink);
+}
+details.faq-item summary::-webkit-details-marker{display:none;}
+.faq-plus{width:20px;height:20px;flex-shrink:0;position:relative;}
+.faq-plus::before,.faq-plus::after{content:"";position:absolute;background:var(--accent-warm);border-radius:2px;transition:transform .3s var(--ease);}
+.faq-plus::before{left:2px;right:2px;top:9px;height:2px;}
+.faq-plus::after{top:2px;bottom:2px;left:9px;width:2px;}
+details.faq-item[open] .faq-plus::after{transform:rotate(90deg);opacity:0;}
+.faq-answer{padding:0 20px 20px;color:var(--ink-soft);font-size:14.5px;line-height:1.65;}
+.faq-answer a{color:var(--accent-soft);font-weight:600;border-bottom:1px solid currentColor;}
+.faq-cta{
+  display:inline-flex;align-items:center;gap:8px;margin-top:12px;
+  background:var(--accent);color:var(--paper);padding:10px 18px;border-radius:999px;
+  font-size:12.5px;font-weight:600;letter-spacing:.04em;
+  transition:transform .3s var(--ease), background .3s var(--ease);
+}
+.faq-cta:hover{background:var(--accent-soft);transform:translateY(-2px);}
+.faq-cta svg{width:14px;height:14px;}
+
+.faq-closing{
+  margin-top:40px;padding:32px;border-radius:16px;background:var(--paper-raised);border:1px solid var(--line);
+  text-align:center;
+}
+.faq-closing p{color:var(--ink-soft);font-size:14px;margin-bottom:16px;}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--accent);color:var(--paper);border:1px solid var(--accent);
+  padding:14px 30px;font-size:13.5px;letter-spacing:.06em;font-weight:600;
+  border-radius:999px;box-shadow:var(--shadow-sm);
+  transition:transform .3s var(--ease), box-shadow .3s var(--ease), background .3s var(--ease);
+}
+.btn-primary:hover{background:var(--accent-soft);transform:translateY(-3px);box-shadow:var(--shadow);}
+
+/* WhatsApp float */
+.wa-float{position:fixed;right:24px;bottom:24px;z-index:60;width:58px;height:58px;border-radius:50%;background:var(--accent);color:var(--paper);display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow);transition:transform .3s var(--ease), background .3s var(--ease);}
+.wa-float:hover{transform:translateY(-4px) scale(1.05);background:var(--accent-soft);}
+.wa-float svg{width:28px;height:28px;}
+.wa-float::before{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--accent);opacity:.6;animation:wa-pulse 2.4s var(--ease) infinite;}
+@keyframes wa-pulse{0%{transform:scale(1);opacity:.6;}100%{transform:scale(1.6);opacity:0;}}
+@media(max-width:560px){.wa-float{right:16px;bottom:16px;width:52px;height:52px;}}
+
+/* Footer (shared) */
+footer{background:var(--paper);border-top:1px solid var(--line);padding:70px 0 26px;}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;margin-bottom:56px;}
+.footer-brand .logo{margin-bottom:16px;}
+.footer-brand p{font-size:13px;color:var(--ink-soft);line-height:1.6;max-width:260px;}
+.footer-col h4{font-size:12px;letter-spacing:.1em;color:var(--accent-warm);margin-bottom:18px;font-weight:700;}
+.footer-col a{display:block;font-size:13.5px;color:var(--ink-soft);margin-bottom:11px;transition:color .2s;}
+.footer-col a:hover{color:var(--ink);}
+.footer-bottom{border-top:1px solid var(--line);padding-top:26px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--ink-soft);opacity:.6;}
+.social-row{display:flex;gap:16px;}
+.social-row a{width:32px;height:32px;border:1px solid var(--line-strong);border-radius:50%;display:flex;align-items:center;justify-content:center;}
+
+@media(max-width:980px){
+  .nav-links{display:none;}
+  .nav-burger{display:flex;}
+  .mobile-menu{display:block;max-height:0;overflow:hidden;transition:max-height .35s var(--ease);border-top:1px solid var(--line);}
+  .mobile-menu.open{max-height:420px;}
+  .mobile-menu .container{padding-top:18px;padding-bottom:18px;display:flex;flex-direction:column;gap:16px;}
+  .mobile-menu a{font-size:15px;color:var(--ink-soft);}
+  .mobile-menu a.current{color:var(--ink);font-weight:600;}
+  .mobile-menu .nav-cta{align-self:flex-start;}
+  .faq-wrap{grid-template-columns:1fr;}
+  .faq-nav{position:static;flex-direction:row;flex-wrap:wrap;}
+  .footer-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:560px){
+  .container{padding:0 20px;}
+  .footer-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js-ready');</script>
+
+<header>
+  <div class="topbar">COMPRA ONLINE MUY PRONTO — POR AHORA, COORDINÁ TU PAR POR <a href="https://wa.me/5491160072118" target="_blank" rel="noopener">WHATSAPP</a></div>
+  <div class="container nav">
+    <a class="logo" href="index.html" aria-label="Aconcagua — ir al inicio">
+      <img src="img/brand/isotipo-negro.png" alt="Aconcagua" width="38" height="38">
+      <span>
+        <span class="logo-text">ACONCAGUA</span>
+        <span class="logo-sub">CALZADO BAREFOOT</span>
+      </span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html">Inicio</a>
+      <a href="index.html#coleccion">Colección</a>
+      <a href="index.html#manifiesto">Por qué barefoot</a>
+      <a href="WebFAQ1.html" class="current">Preguntas frecuentes</a>
+      <a href="index.html#contacto">Contacto</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="https://wa.me/5491160072118" target="_blank" rel="noopener" class="nav-cta">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18a7.9 7.9 0 0 1-4.02-1.1l-.29-.17-2.99.79.8-2.92-.19-.3A7.93 7.93 0 1 1 12 20zm4.36-5.86c-.24-.12-1.4-.69-1.62-.77-.22-.08-.38-.12-.54.12-.16.24-.62.77-.76.93-.14.16-.28.18-.52.06-.24-.12-1-.37-1.9-1.17-.7-.62-1.18-1.39-1.32-1.63-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.47-.4-.4-.54-.41h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.4-.57 1.6-1.12.2-.55.2-1.02.14-1.12-.06-.1-.22-.16-.46-.28z"/></svg>
+        Consultanos
+      </a>
+      <button type="button" class="nav-burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="container">
+      <a href="index.html">Inicio</a>
+      <a href="index.html#coleccion">Colección</a>
+      <a href="index.html#manifiesto">Por qué barefoot</a>
+      <a href="WebFAQ1.html" class="current">Preguntas frecuentes</a>
+      <a href="index.html#contacto">Contacto</a>
+      <a href="https://wa.me/5491160072118" target="_blank" rel="noopener" class="nav-cta">Consultanos por WhatsApp</a>
+    </div>
+  </div>
+</header>
+
+<div class="page-hero reveal">
+  <div class="container">
+    <div class="section-eyebrow">AYUDA</div>
+    <h1>Preguntas frecuentes</h1>
+    <p>Aconcagua recién arranca: preferimos contarte exactamente cómo funciona todo hoy antes que prometerte algo que todavía no podemos cumplir. Lo que no está confirmado, lo charlamos directo por WhatsApp.</p>
+  </div>
+</div>
+
+<div class="container faq-wrap">
+  <nav class="faq-nav reveal">
+    <a href="#comprar">Cómo comprar</a>
+    <a href="#talles">Talles</a>
+    <a href="#barefoot">Qué es barefoot</a>
+    <a href="#envios">Envíos y pagos</a>
+    <a href="#cambios">Cambios y devoluciones</a>
+    <a href="#marca">Sobre la marca</a>
+  </nav>
+
+  <div>
+    <div class="faq-group reveal" id="comprar">
+      <div class="faq-group-title">Cómo comprar</div>
+      <div class="faq-group-sub">Todavía no tenemos checkout online — así funciona hoy.</div>
+
+      <details class="faq-item" open>
+        <summary>¿Puedo comprar directo desde la web?<span class="faq-plus"></span></summary>
+        <div class="faq-answer">
+          Todavía no — estamos preparando el checkout online. Por ahora, elegís tu modelo en la <a href="index.html#coleccion">colección</a> y coordinamos la compra por WhatsApp: te confirmamos stock, talle y forma de pago ahí mismo.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>¿Cómo hago un pedido?<span class="faq-plus"></span></summary>
+        <div class="faq-answer">
+          Tocás "Consultar por WhatsApp" en el modelo que te gusta (o el botón flotante en cualquier página) y seguimos la conversación de ahí: talle, color disponible y cómo recibirlo.
+          <div><a class="faq-cta" href="https://wa.me/5491160072118?text=Hola%2C%20quiero%20hacer%20un%20pedido" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18a7.9 7.9 0 0 1-4.02-1.1l-.29-.17-2.99.79.8-2.92-.19-.3A7.93 7.93 0 1 1 12 20zm4.36-5.86c-.24-.12-1.4-.69-1.62-.77-.22-.08-.38-.12-.54.12-.16.24-.62.77-.76.93-.14.16-.28.18-.52.06-.24-.12-1-.37-1.9-1.17-.7-.62-1.18-1.39-1.32-1.63-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.47-.4-.4-.54-.41h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.4-.57 1.6-1.12.2-.55.2-1.02.14-1.12-.06-.1-.22-.16-.46-.28z"/></svg>Iniciar pedido por WhatsApp</a></div>
+        </div>
+      </details>
+    </div>
+
+    <div class="faq-group reveal" id="talles">
+      <div class="faq-group-title">Talles</div>
+      <div class="faq-group-sub">Todavía no tenemos una tabla de talles publicada — te asesoramos 1 a 1.</div>
+
+      <details class="faq-item">
+        <summary>¿Cómo sé qué talle pedir?<span class="faq-plus"></span></summary>
+        <div class="faq-answer">
+          Contanos por WhatsApp qué número usás normalmente y te ayudamos a definir el talle Aconcagua — como el calzado barefoot tiene puntera más ancha, a veces cambia un poco respecto a otras marcas.
+          <div><a class="faq-cta" href="https://wa.me/5491160072118?text=Hola%2C%20necesito%20ayuda%20para%20elegir%20mi%20talle" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18a7.9 7.9 0 0 1-4.02-1.1l-.29-.17-2.99.79.8-2.92-.19-.3A7.93 7.93 0 1 1 12 20zm4.36-5.86c-.24-.12-1.4-.69-1.62-.77-.22-.08-.38-.12-.54.12-.16.24-.62.77-.76.93-.14.16-.28.18-.52.06-.24-.12-1-.37-1.9-1.17-.7-.62-1.18-1.39-1.32-1.63-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.47-.4-.4-.54-.41h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.4-.57 1.6-1.12.2-.55.2-1.02.14-1.12-.06-.1-.22-.16-.46-.28z"/></svg>Consultar mi talle</a></div>
+        </div>
+      </details>
+    </div>
+
+    <div class="faq-group reveal" id="barefoot">
+      <div class="faq-group-title">Qué es el calzado barefoot</div>
+      <div class="faq-group-sub">Lo que sí podemos contarte con seguridad: es el diseño del producto.</div>
+
+      <details class="faq-item">
+        <summary>¿Qué diferencia a un calzado barefoot de uno común?<span class="faq-plus"></span></summary>
+        <div class="faq-answer">
+          Tres cosas: <strong>cero drop</strong> (sin elevación en el talón, tu pie apoya plano), <strong>puntera ancha</strong> (los dedos se extienden en vez de comprimirse) y <strong>suela flexible de bajo perfil</strong> (se dobla con el movimiento natural del pie en vez de bloquearlo). Podés ver el detalle en <a href="index.html#manifiesto">nuestro manifiesto</a>.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>¿Sirve para entrenar o solo para caminar?<span class="faq-plus"></span></summary>
+        <div class="faq-answer">
+          Para ambos. La base plana y estable ayuda especialmente en sentadillas, peso muerto y trabajo funcional, además de uso urbano y de sendero.
+        </div>
+      </details>
+    </div>
+
+    <div class="faq-group reveal" id="envios">
+      <div class="faq-group-title">Envíos y pagos</div>
+      <div class="faq-group-sub">Todavía no tenemos una política fija publicada — se coordina caso por caso.</div>
+
+      <details class="faq-item">
+        <summary>¿Hacen envíos? ¿Qué métodos de pago aceptan?<span class="faq-plus"></span></summary>
+        <div class="faq-answer">
+          Estamos en una etapa temprana y coordinamos envío y forma de pago directo por WhatsApp según cada pedido, en vez de tener una política única publicada que después no podamos sostener igual en todos los casos.
+          <div><a class="faq-cta" href="https://wa.me/5491160072118?text=Hola%2C%20tengo%20una%20consulta%20sobre%20env%C3%ADos%20y%20pagos" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18a7.9 7.9 0 0 1-4.02-1.1l-.29-.17-2.99.79.8-2.92-.19-.3A7.93 7.93 0 1 1 12 20zm4.36-5.86c-.24-.12-1.4-.69-1.62-.77-.22-.08-.38-.12-.54.12-.16.24-.62.77-.76.93-.14.16-.28.18-.52.06-.24-.12-1-.37-1.9-1.17-.7-.62-1.18-1.39-1.32-1.63-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.47-.4-.4-.54-.41h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.4-.57 1.6-1.12.2-.55.2-1.02.14-1.12-.06-.1-.22-.16-.46-.28z"/></svg>Preguntar por envío y pago</a></div>
+        </div>
+      </details>
+    </div>
+
+    <div class="faq-group reveal" id="cambios">
+      <div class="faq-group-title">Cambios y devoluciones</div>
+      <div class="faq-group-sub">Misma razón: preferimos resolverlo con vos directamente, caso por caso.</div>
+
+      <details class="faq-item">
+        <summary>¿Puedo cambiar el talle o devolver mi par?<span class="faq-plus"></span></summary>
+        <div class="faq-answer">
+          Todavía no tenemos una política de cambios publicada. Si algo no te queda bien, escribinos y lo vemos juntos — al ser una marca chica podemos resolverlo de forma más flexible que una tienda grande.
+          <div><a class="faq-cta" href="https://wa.me/5491160072118?text=Hola%2C%20tengo%20una%20consulta%20sobre%20cambios%20o%20devoluciones" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18a7.9 7.9 0 0 1-4.02-1.1l-.29-.17-2.99.79.8-2.92-.19-.3A7.93 7.93 0 1 1 12 20zm4.36-5.86c-.24-.12-1.4-.69-1.62-.77-.22-.08-.38-.12-.54.12-.16.24-.62.77-.76.93-.14.16-.28.18-.52.06-.24-.12-1-.37-1.9-1.17-.7-.62-1.18-1.39-1.32-1.63-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.47-.4-.4-.54-.41h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.4-.57 1.6-1.12.2-.55.2-1.02.14-1.12-.06-.1-.22-.16-.46-.28z"/></svg>Consultar mi caso</a></div>
+        </div>
+      </details>
+    </div>
+
+    <div class="faq-group reveal" id="marca">
+      <div class="faq-group-title">Sobre la marca</div>
+      <div class="faq-group-sub"></div>
+
+      <details class="faq-item">
+        <summary>¿Ustedes fabrican el calzado?<span class="faq-plus"></span></summary>
+        <div class="faq-answer">
+          No fabricamos nosotros — traemos el calzado barefoot a Argentina y lo hacemos accesible acá, con asesoramiento directo en cada compra.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Aconcagua recién está empezando, ¿verdad?<span class="faq-plus"></span></summary>
+        <div class="faq-answer">
+          Sí, y lo decimos con orgullo en vez de esconderlo: estamos construyendo la marca paso a paso. Eso significa trato directo con vos, sin call center ni respuestas automáticas — y también que algunas cosas (como el checkout online) todavía están en camino.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>¿Dónde los sigo?<span class="faq-plus"></span></summary>
+        <div class="faq-answer">
+          En Instagram como <a href="https://instagram.com/aconcagua.fit" target="_blank" rel="noopener">@aconcagua.fit</a>, o directo por WhatsApp para cualquier consulta.
+        </div>
+      </details>
+    </div>
+
+    <div class="faq-closing reveal">
+      <p>¿No encontraste tu respuesta? Escribinos directo, respondemos en el día.</p>
+      <a href="https://wa.me/5491160072118?text=Hola%2C%20tengo%20una%20pregunta%20que%20no%20estaba%20en%20las%20FAQ" target="_blank" rel="noopener" class="btn-primary">CONSULTAR POR WHATSAPP</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="logo" href="index.html" aria-label="Aconcagua — ir al inicio">
+          <img src="img/brand/isotipo-negro.png" alt="Aconcagua" width="34" height="34">
+          <span>
+            <span class="logo-text" style="font-size:18px;">ACONCAGUA</span>
+            <span class="logo-sub">CALZADO BAREFOOT</span>
+          </span>
+        </a>
+        <p>Calzado barefoot traído a Argentina para devolverle al pie su forma y fuerza natural.</p>
+        <div class="social-row" style="margin-top:22px;">
+          <a href="https://instagram.com/aconcagua.fit" target="_blank" rel="noopener" aria-label="Instagram">IG</a><a href="https://wa.me/5491160072118" target="_blank" rel="noopener" aria-label="WhatsApp">WA</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>TIENDA</h4>
+        <a href="index.html?cat=trail#coleccion">Trail</a>
+        <a href="index.html?cat=urbana#coleccion">Urbana</a>
+        <a href="index.html?cat=agua#coleccion">Agua</a>
+        <a href="index.html#coleccion">Ver toda la colección</a>
+      </div>
+      <div class="footer-col">
+        <h4>AYUDA</h4>
+        <a href="WebFAQ1.html#talles">Guía de talles</a>
+        <a href="WebFAQ1.html#cambios">Cambios y devoluciones</a>
+        <a href="WebFAQ1.html">Preguntas frecuentes</a>
+        <a href="https://wa.me/5491160072118?text=Hola%2C%20quiero%20consultar%20el%20estado%20de%20mi%20pedido" target="_blank" rel="noopener">Seguimiento de pedido</a>
+      </div>
+      <div class="footer-col">
+        <h4>MARCA</h4>
+        <a href="index.html#manifiesto">Por qué barefoot</a>
+        <a href="index.html#contacto">Contacto</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Aconcagua Calzado Barefoot. Todos los derechos reservados.</span>
+      <span>Buenos Aires, Argentina</span>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/5491160072118?text=Hola%2C%20quiero%20hacer%20una%20consulta" target="_blank" rel="noopener" class="wa-float" aria-label="Consultar por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18a7.9 7.9 0 0 1-4.02-1.1l-.29-.17-2.99.79.8-2.92-.19-.3A7.93 7.93 0 1 1 12 20zm4.36-5.86c-.24-.12-1.4-.69-1.62-.77-.22-.08-.38-.12-.54.12-.16.24-.62.77-.76.93-.14.16-.28.18-.52.06-.24-.12-1-.37-1.9-1.17-.7-.62-1.18-1.39-1.32-1.63-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.47-.4-.4-.54-.41h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.4-.57 1.6-1.12.2-.55.2-1.02.14-1.12-.06-.1-.22-.16-.46-.28z"/></svg>
+</a>
+
+<script>
+(function(){
+  var header = document.querySelector('header');
+  function onScroll(){ header.classList.toggle('scrolled', window.scrollY > 10); }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  var burger = document.querySelector('.nav-burger');
+  var menu = document.getElementById('mobile-menu');
+  if(burger && menu){
+    burger.addEventListener('click', function(){
+      var open = menu.classList.toggle('open');
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    menu.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        menu.classList.remove('open');
+        burger.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var revealEls = document.querySelectorAll('.reveal');
+  if(reduced || !('IntersectionObserver' in window)){
+    revealEls.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){ entry.target.classList.add('in'); io.unobserve(entry.target); }
+      });
+    }, {threshold:.1});
+    revealEls.forEach(function(el){ io.observe(el); });
+  }
+
+  if(location.hash){
+    var target = document.querySelector(location.hash);
+    if(target && target.classList.contains('faq-group')){
+      var firstDetail = target.querySelector('details.faq-item');
+      if(firstDetail) firstDetail.open = true;
+    }
+  }
+})();
+</script>
+</body>
+</html>
