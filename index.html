@@ -255,9 +255,14 @@ header.scrolled .nav{padding:13px 0;}
 .card-btn:hover{background:var(--accent);border-color:var(--accent);color:var(--paper);transform:translateY(-2px);}
 .card-btn:active{transform:translateY(0) scale(.97);}
 
-/* Editorial feature photo */
-.feature-photo{border-radius:12px;overflow:hidden;box-shadow:var(--shadow);}
-.feature-photo img{width:100%;height:auto;display:block;}
+/* Editorial feature grid */
+.feature-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;}
+.feature-cell{margin:0;position:relative;border-radius:12px;overflow:hidden;box-shadow:var(--shadow);aspect-ratio:1/1;}
+.feature-cell img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s var(--ease);}
+.feature-cell:hover img{transform:scale(1.05);}
+.feature-cell-caption{position:absolute;left:0;right:0;bottom:0;padding:16px 14px 14px;background:linear-gradient(0deg,rgba(18,16,11,.82) 0%,rgba(18,16,11,.45) 55%,rgba(18,16,11,0) 100%);}
+.feature-cell-caption h4{color:var(--paper);font-size:14px;font-weight:700;letter-spacing:.02em;margin-bottom:3px;}
+.feature-cell-caption p{color:rgba(242,238,228,.82);font-size:11.5px;line-height:1.35;}
 
 /* Topographic divider — contour-line motif between sections */
 .topo-divider{width:100%;height:56px;overflow:hidden;line-height:0;}
@@ -416,6 +421,7 @@ footer{background:var(--paper);border-top:1px solid var(--line);padding:70px 0 2
   .manifesto .container{grid-template-columns:1fr;padding:64px 24px;}
   .benefits-grid{grid-template-columns:repeat(2,1fr);}
   .footer-grid{grid-template-columns:repeat(2,1fr);}
+  .feature-grid{grid-template-columns:repeat(3,1fr);}
 }
 @media(max-width:560px){
   .grid{grid-template-columns:1fr;}
@@ -423,6 +429,10 @@ footer{background:var(--paper);border-top:1px solid var(--line);padding:70px 0 2
   .benefits-grid{grid-template-columns:1fr;}
   .footer-grid{grid-template-columns:1fr;}
   .newsletter-form{flex-direction:column;}
+  .feature-grid{grid-template-columns:repeat(2,1fr);gap:10px;}
+  .feature-cell-caption{padding:12px 10px 10px;}
+  .feature-cell-caption h4{font-size:12.5px;}
+  .feature-cell-caption p{font-size:10.5px;}
 }
 </style>
 </head>
@@ -620,8 +630,27 @@ footer{background:var(--paper);border-top:1px solid var(--line);padding:70px 0 2
         <div class="section-title">Pensado desde el pie hacia arriba</div>
       </div>
     </div>
-    <div class="feature-photo">
-      <img src="img/campania/caracteristicas-tan-v2.jpg" alt="Detalles de diseño Aconcagua: flexibilidad, puntera ancha, peso liviano, suela flexible y zero drop" loading="lazy">
+    <div class="feature-grid reveal-stagger">
+      <figure class="feature-cell">
+        <img src="img/campania/grid/diseno-01-flexibilidad.jpg" alt="Flexibilidad: el calzado Aconcagua PAMPA se adapta al movimiento natural del pie" loading="lazy">
+        <figcaption class="feature-cell-caption"><h4>FLEXIBILIDAD</h4><p>Se adapta al movimiento natural de tu pie.</p></figcaption>
+      </figure>
+      <figure class="feature-cell">
+        <img src="img/campania/grid/diseno-02-puntera-ancha.jpg" alt="Puntera ancha: comparación entre un pie descalzo y el calzado Aconcagua PAMPA" loading="lazy">
+        <figcaption class="feature-cell-caption"><h4>PUNTERA ANCHA</h4><p>Permite que tus dedos se extiendan y se muevan libremente.</p></figcaption>
+      </figure>
+      <figure class="feature-cell">
+        <img src="img/campania/grid/diseno-03-ligera.jpg" alt="Ligera: caminando con el calzado Aconcagua PAMPA en la montaña" loading="lazy">
+        <figcaption class="feature-cell-caption"><h4>LIGERA</h4><p>Menos peso, más libertad.</p></figcaption>
+      </figure>
+      <figure class="feature-cell">
+        <img src="img/campania/grid/diseno-04-suela-flexible.jpg" alt="Suela flexible: flexionando el calzado Aconcagua PAMPA con las manos" loading="lazy">
+        <figcaption class="feature-cell-caption"><h4>SUELA FLEXIBLE</h4><p>Se flexiona y se adapta a cada paso.</p></figcaption>
+      </figure>
+      <figure class="feature-cell">
+        <img src="img/campania/grid/diseno-05-zero-drop.jpg" alt="Zero drop: perfil del calzado Aconcagua PAMPA mostrando la suela plana" loading="lazy">
+        <figcaption class="feature-cell-caption"><h4>ZERO DROP</h4><p>Sin elevación en el talón para una postura natural.</p></figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -651,8 +680,27 @@ footer{background:var(--paper);border-top:1px solid var(--line);padding:70px 0 2
 
 <section class="section reveal" id="terreno">
   <div class="container">
-    <div class="feature-photo">
-      <img src="img/campania/terreno-negro-v2.jpg" alt="Aconcagua CUMBRE en distintos contextos: playa, gimnasio, ciudad, sendero natural y roca" loading="lazy">
+    <div class="feature-grid reveal-stagger">
+      <figure class="feature-cell">
+        <img src="img/campania/grid/terreno-01-playa.jpg" alt="Aconcagua CUMBRE en la playa, al atardecer" loading="lazy">
+        <figcaption class="feature-cell-caption"><h4>LIBERTAD EN LA PLAYA</h4></figcaption>
+      </figure>
+      <figure class="feature-cell">
+        <img src="img/campania/grid/terreno-02-gimnasio.jpg" alt="Aconcagua CUMBRE en el gimnasio, levantando una pesa rusa" loading="lazy">
+        <figcaption class="feature-cell-caption"><h4>CONTROL EN EL GIMNASIO</h4></figcaption>
+      </figure>
+      <figure class="feature-cell">
+        <img src="img/campania/grid/terreno-03-ciudad.jpg" alt="Aconcagua CUMBRE cruzando una calle en la ciudad" loading="lazy">
+        <figcaption class="feature-cell-caption"><h4>MOVIMIENTO EN LA CIUDAD</h4></figcaption>
+      </figure>
+      <figure class="feature-cell">
+        <img src="img/campania/grid/terreno-04-terreno-natural.jpg" alt="Aconcagua CUMBRE corriendo por un sendero natural" loading="lazy">
+        <figcaption class="feature-cell-caption"><h4>AGILIDAD EN TERRENO NATURAL</h4></figcaption>
+      </figure>
+      <figure class="feature-cell">
+        <img src="img/campania/grid/terreno-05-roca.jpg" alt="Aconcagua CUMBRE con agarre sobre una roca en la montaña" loading="lazy">
+        <figcaption class="feature-cell-caption"><h4>AGARRE EN ROCA</h4></figcaption>
+      </figure>
     </div>
   </div>
 </section>
