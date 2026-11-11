@@ -1,14 +1,29 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-AR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Aconcagua Barefoot</title>
-<link rel="icon" type="image/png" href="img/brand/favicon.png">
-<meta property="og:title" content="Aconcagua — Calzado Barefoot">
-<meta property="og:description" content="Calzado barefoot traído a Argentina. Catálogo y consultas por WhatsApp.">
-<meta property="og:image" content="img/campania/hero-cordillera.jpg">
+<title>Zapatillas barefoot en Argentina | Aconcagua</title>
+<meta name="description" content="Zapatillas barefoot en Argentina: suela flexible, puntera ancha y cero drop. Mirá la colección y coordiná tu par por WhatsApp, con asesoramiento de talle.">
+<link rel="canonical" href="https://aconcagua.fit/">
+<meta name="theme-color" content="#F2EEE4">
+<link rel="icon" type="image/png" sizes="32x32" href="img/brand/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="img/brand/favicon-192.png">
+<link rel="apple-touch-icon" href="img/brand/apple-touch-icon.png">
+<meta property="og:site_name" content="Aconcagua">
+<meta property="og:locale" content="es_AR">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://aconcagua.fit/">
+<meta property="og:title" content="Aconcagua — Calzado barefoot">
+<meta property="og:description" content="Zapatillas barefoot en Argentina: suela flexible, puntera ancha y cero drop. Mirá la colección y coordiná tu par por WhatsApp, con asesoramiento de talle.">
+<meta property="og:image" content="https://aconcagua.fit/img/og/aconcagua.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Zapatilla barefoot Aconcagua negra con suela caramelo, con la cordillera de fondo">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" as="image" href="img/campania/hero-cordillera.jpg" media="(min-width:761px)" fetchpriority="high">
+<link rel="preload" as="image" href="img/campania/hero-movil.jpg" media="(max-width:760px)" fetchpriority="high">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://aconcagua.fit/#org","name":"Aconcagua","alternateName":"Aconcagua Calzado Barefoot","url":"https://aconcagua.fit/","logo":"https://aconcagua.fit/img/brand/favicon-192.png","sameAs":["https://instagram.com/aconcagua.fit"],"areaServed":"AR"},{"@type":"WebSite","@id":"https://aconcagua.fit/#web","url":"https://aconcagua.fit/","name":"Aconcagua","inLanguage":"es-AR","publisher":{"@id":"https://aconcagua.fit/#org"}}]}</script>
 <style>
 :root{
   --paper:#F2EEE4;
@@ -21,7 +36,7 @@
   --ink-soft:#59554A;
   --ink:#2B2620;
   --accent-warm:#7C5F30;
-  --accent-water:#4F6E76;
+  --accent-water:#4A676F;
   --shadow:0 14px 34px -14px rgba(43,38,32,.28);
   --shadow-sm:0 6px 16px -8px rgba(43,38,32,.22);
   --ease:cubic-bezier(.22,1,.36,1);
@@ -57,13 +72,13 @@ html{scroll-behavior:smooth;}
 header{
   position:sticky;top:0;z-index:50;
   background:rgba(242,238,228,0.86);
-  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
   border-bottom:1px solid var(--line-strong);
   transition:box-shadow .3s var(--ease);
 }
 header.scrolled{box-shadow:var(--shadow-sm);}
 .nav{transition:padding .3s var(--ease);}
-header.scrolled .nav{padding:13px 0;}
+header.scrolled .nav{padding-top:13px;padding-bottom:13px;}
 .topbar{
   background:var(--paper-raised);
   text-align:center;
@@ -75,7 +90,7 @@ header.scrolled .nav{padding:13px 0;}
 }
 .nav{
   display:flex;align-items:center;justify-content:space-between;
-  padding:18px 0;
+  padding-top:18px;padding-bottom:18px;
 }
 .logo{display:flex;align-items:center;gap:12px;transition:opacity .2s;}
 .logo:hover{opacity:.8;}
@@ -84,7 +99,7 @@ header.scrolled .nav{padding:13px 0;}
 .logo-sub{display:block;font-family:'Inter',sans-serif;font-size:9px;letter-spacing:.35em;color:var(--accent-warm);font-weight:500;margin-top:2px;}
 .nav-links{display:flex;gap:34px;font-size:14px;letter-spacing:.03em;}
 .nav-links a{color:var(--ink-soft);transition:color .2s;position:relative;}
-.nav-links a:hover{color:var(--ink);}
+.nav-links a:hover,.nav-links a.current{color:var(--ink);}
 .nav-actions{display:flex;align-items:center;gap:22px;font-size:14px;}
 .nav-cta{
   display:flex;align-items:center;gap:8px;
@@ -106,6 +121,7 @@ header.scrolled .nav{padding:13px 0;}
 .hero{
   position:relative;
   min-height:88vh;
+  min-height:88svh;
   display:flex;align-items:center;
   overflow:hidden;
 }
@@ -223,8 +239,8 @@ header.scrolled .nav{padding:13px 0;}
 }
 .card:hover .card-media img.base-img{transform:scale(1.08);}
 .card-media img.hover-img{position:absolute;inset:0;opacity:0;}
-.card:hover .card-media img.hover-img{opacity:1;transform:scale(1.08);}
-.card:hover .card-media img.base-img{opacity:0;}
+.card:hover .card-media.hover-ready img.hover-img{opacity:1;transform:scale(1.08);}
+.card:hover .card-media.hover-ready img.base-img{opacity:0;}
 .card-media::after{
   content:"";position:absolute;inset:0;pointer-events:none;
   box-shadow:inset 0 0 0 1px rgba(43,38,32,.06), inset 0 -34px 40px -30px var(--paper-raised), inset 0 34px 40px -30px var(--paper-raised);
@@ -261,13 +277,13 @@ header.scrolled .nav{padding:13px 0;}
 .feature-cell img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s var(--ease);}
 .feature-cell:hover img{transform:scale(1.05);}
 .feature-cell-caption{position:absolute;left:0;right:0;bottom:0;padding:16px 14px 14px;background:linear-gradient(0deg,rgba(18,16,11,.82) 0%,rgba(18,16,11,.45) 55%,rgba(18,16,11,0) 100%);}
-.feature-cell-caption h4{color:var(--paper);font-size:14px;font-weight:700;letter-spacing:.02em;margin-bottom:3px;}
+.feature-cell-caption h3{color:var(--paper);font-size:14px;font-weight:700;letter-spacing:.02em;margin-bottom:3px;}
 .feature-cell-caption p{color:rgba(242,238,228,.82);font-size:11.5px;line-height:1.35;}
 @media(min-width:981px){
   .feature-grid{grid-template-columns:repeat(4,1fr);}
   .feature-cell.feature-hero{grid-column:span 2;grid-row:span 2;}
   .feature-cell.feature-hero .feature-cell-caption{padding:22px 20px 20px;}
-  .feature-cell.feature-hero .feature-cell-caption h4{font-size:18px;}
+  .feature-cell.feature-hero .feature-cell-caption h3{font-size:18px;}
   .feature-cell.feature-hero .feature-cell-caption p{font-size:13px;}
 }
 
@@ -316,7 +332,7 @@ header.scrolled .nav{padding:13px 0;}
 .manifesto-badge{
   position:absolute;left:16px;bottom:16px;z-index:2;
   display:flex;align-items:center;gap:8px;
-  background:rgba(18,16,11,.55);backdrop-filter:blur(6px);
+  background:rgba(18,16,11,.55);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
   padding:8px 14px;border-radius:999px;
 }
 .manifesto-badge img{width:14px;height:16px;flex-shrink:0;}
@@ -345,21 +361,6 @@ header.scrolled .nav{padding:13px 0;}
 }
 .newsletter h2{font-family:Georgia,serif;font-size:30px;color:var(--ink);margin-bottom:14px;font-weight:700;}
 .newsletter p{color:var(--ink-soft);margin-bottom:30px;font-size:14.5px;}
-.newsletter-form{display:flex;justify-content:center;gap:10px;max-width:440px;margin:0 auto;}
-.newsletter-form input{
-  flex:1;background:var(--paper);border:1px solid var(--outline);
-  padding:14px 20px;color:var(--ink);font-size:14px;border-radius:999px;
-  transition:border-color .25s var(--ease), box-shadow .25s var(--ease);
-}
-.newsletter-form input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(107,116,85,.18);}
-.newsletter-form input::placeholder{color:var(--ink-soft);opacity:.5;}
-.newsletter-form button{
-  background:var(--accent-warm);color:var(--paper);border:1px solid var(--accent-warm);
-  padding:14px 24px;font-size:13px;font-weight:700;letter-spacing:.05em;border-radius:999px;cursor:pointer;
-  transition:transform .3s var(--ease), box-shadow .3s var(--ease), background .3s var(--ease), border-color .3s var(--ease);
-}
-.newsletter-form button:hover{background:var(--ink);border-color:var(--ink);transform:translateY(-2px);box-shadow:var(--shadow-sm);}
-.newsletter-form button:active{transform:translateY(0) scale(.97);}
 
 /* Contacto */
 .contact-section{padding:88px 0;}
@@ -401,13 +402,13 @@ footer{background:var(--paper);border-top:1px solid var(--line);padding:70px 0 2
 .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;margin-bottom:56px;}
 .footer-brand .logo{margin-bottom:16px;}
 .footer-brand p{font-size:13px;color:var(--ink-soft);line-height:1.6;max-width:260px;}
-.footer-col h4{font-size:12px;letter-spacing:.1em;color:var(--accent-warm);margin-bottom:18px;font-weight:700;}
+.footer-col h2{font-size:12px;letter-spacing:.1em;color:var(--accent-warm);margin-bottom:18px;font-weight:700;}
 .footer-col a{display:block;font-size:13.5px;color:var(--ink-soft);margin-bottom:11px;transition:color .2s;}
 .footer-col a:hover{color:var(--ink);}
 .footer-bottom{
   border-top:1px solid var(--line);padding-top:26px;
   display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
-  font-size:12px;color:var(--ink-soft);opacity:.6;
+  font-size:12px;color:var(--ink-soft);
 }
 .social-row{display:flex;gap:16px;}
 .social-row a{width:32px;height:32px;border:1px solid var(--line-strong);border-radius:50%;display:flex;align-items:center;justify-content:center;}
@@ -416,8 +417,8 @@ footer{background:var(--paper);border-top:1px solid var(--line);padding:70px 0 2
   .nav-links{display:none;}
   .nav-burger{display:flex;}
   .nav-actions .nav-cta{display:none;}
-  .mobile-menu{display:block;max-height:0;overflow:hidden;transition:max-height .35s var(--ease);border-top:1px solid var(--line);}
-  .mobile-menu.open{max-height:420px;}
+  .mobile-menu{display:block;max-height:0;overflow:hidden;visibility:hidden;transition:max-height .35s var(--ease), visibility 0s linear .35s;border-top:1px solid var(--line);}
+  .mobile-menu.open{max-height:420px;visibility:visible;transition:max-height .35s var(--ease), visibility 0s;}
   .mobile-menu .container{padding-top:18px;padding-bottom:18px;display:flex;flex-direction:column;gap:16px;}
   .mobile-menu a{font-size:15px;color:var(--ink-soft);}
   .mobile-menu a.current{color:var(--ink);font-weight:600;}
@@ -434,37 +435,100 @@ footer{background:var(--paper);border-top:1px solid var(--line);padding:70px 0 2
   .grid-5{grid-template-columns:1fr;}
   .benefits-grid{grid-template-columns:1fr;}
   .footer-grid{grid-template-columns:1fr;}
-  .newsletter-form{flex-direction:column;}
   .feature-grid{gap:10px;}
   .feature-cell-caption{padding:12px 10px 10px;}
-  .feature-cell-caption h4{font-size:12.5px;}
+  .feature-cell-caption h3{font-size:12.5px;}
   .feature-cell-caption p{font-size:10.5px;}
+}
+
+/* Accesibilidad, foco y áreas táctiles (compartido entre páginas) */
+html{scroll-padding-top:80px;}
+h1,h2,h3{text-wrap:balance;}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+.skip-link{position:absolute;left:12px;top:-64px;z-index:100;background:var(--ink);color:var(--paper);padding:12px 18px;border-radius:8px;font-size:14px;font-weight:600;transition:top .2s var(--ease);}
+.skip-link:focus{top:12px;}
+@media(max-width:980px){
+  .mobile-menu a{padding:6px 0;}
+  .mobile-menu a.nav-cta{color:var(--paper);padding:13px 22px;font-size:14px;}
+  .social-row a{width:44px;height:44px;}
+  .footer-col h2{margin-bottom:8px;}
+  .footer-col a{margin-bottom:0;padding:11px 0;}
+}
+@media(max-width:560px){
+  .container{padding-left:20px;padding-right:20px;}
+  .nav,header.scrolled .nav{padding-top:10px;padding-bottom:10px;}
+}
+@media(prefers-reduced-motion:reduce){
+  .wa-float::before,.status-dot{animation:none;}
+}
+
+/* Tarjetas de producto — táctil y legibilidad en celular */
+@media(max-width:980px){
+  .filter-pill{min-height:44px;padding:0 18px;}
+  .card-btn{min-height:44px;}
+}
+@media(max-width:560px){
+  .tag{font-size:11px;}
+  .card-cat{font-size:12px;}
+  .price-label,.soon-badge{font-size:11.5px;}
+}
+
+/* Home — foco sobre la foto, bloque comunidad y hero para celular */
+.hero a:focus-visible{outline-color:var(--paper);}
+.newsletter-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;}
+.btn-warm,.btn-ghost{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 26px;font-size:13px;font-weight:700;letter-spacing:.05em;border-radius:999px;transition:transform .3s var(--ease), box-shadow .3s var(--ease), background .3s var(--ease), border-color .3s var(--ease);}
+.btn-warm{background:var(--accent-warm);color:var(--paper);border:1px solid var(--accent-warm);}
+.btn-warm:hover{background:var(--ink);border-color:var(--ink);transform:translateY(-2px);box-shadow:var(--shadow-sm);}
+.btn-ghost{border:1px solid var(--outline);color:var(--ink);}
+.btn-ghost:hover{border-color:var(--ink);transform:translateY(-2px);}
+.btn-warm:active,.btn-ghost:active{transform:translateY(0) scale(.97);}
+@media(max-width:760px){
+  .hero{flex-direction:column;align-items:stretch;min-height:0;background:#12100b;}
+  .hero-content{order:1;max-width:none;padding:40px 20px 0;}
+  .hero::before{order:2;position:relative;inset:auto;height:300px;margin-top:-24px;background-image:url('img/campania/hero-movil.jpg');background-position:50% 100%;transform:none;will-change:auto;}
+  .hero::after{z-index:1;background:linear-gradient(180deg,#12100b 0%,#12100b calc(100% - 300px),rgba(18,16,11,0) calc(100% - 160px));}
+  .hero p{font-size:16px;margin-bottom:26px;}
+  .btn-row{gap:10px;flex-wrap:nowrap;}
+  .btn-row .btn-primary,.btn-row .btn-outline{flex:1 1 0;justify-content:center;text-align:center;padding:15px 8px;font-size:12.5px;letter-spacing:.05em;white-space:nowrap;}
+}
+@media(max-width:980px){
+  .feature-cell.feature-hero{grid-column:1 / -1;}
+  .feature-cell.feature-hero .feature-cell-caption h3{font-size:16px;}
+  .feature-cell.feature-hero .feature-cell-caption p{font-size:13px;}
+}
+@media(max-width:560px){
+  .newsletter{padding:64px 20px;}
+  .newsletter-actions{flex-direction:column;}
+  .feature-cell-caption h3{font-size:13px;}
+  .feature-cell-caption p{font-size:11.5px;}
 }
 </style>
 </head>
 <body>
 <script>document.documentElement.classList.add('js-ready');</script>
 
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+<aside class="topbar" aria-label="Aviso">COMPRA ONLINE MUY PRONTO — POR AHORA, COORDINÁ TU PAR POR <a href="https://wa.me/5491178175503" target="_blank" rel="noopener">WHATSAPP</a></aside>
+
 <header>
-  <div class="topbar">COMPRA ONLINE MUY PRONTO — POR AHORA, COORDINÁ TU PAR POR <a href="https://wa.me/5491178175503" target="_blank" rel="noopener">WHATSAPP</a></div>
   <div class="container nav">
     <a class="logo" href="index.html" aria-label="Aconcagua — ir al inicio">
-      <img src="img/brand/isotipo-negro.png" alt="Aconcagua" width="38" height="38">
+      <img src="img/brand/isotipo-negro-120.png" alt="Aconcagua" width="38" height="38">
       <span>
         <span class="logo-text">ACONCAGUA</span>
         <span class="logo-sub">CALZADO BAREFOOT</span>
       </span>
     </a>
-    <nav class="nav-links">
-      <a href="#">Inicio</a>
+    <nav class="nav-links" aria-label="Principal">
+      <a href="#" class="current" aria-current="page">Inicio</a>
       <a href="#coleccion">Colección</a>
       <a href="#manifiesto">Por qué barefoot</a>
-      <a href="WebFAQ1.html#talles">Guía de talles</a>
+      <a href="preguntas-frecuentes.html#talles">Guía de talles</a>
       <a href="#contacto">Contacto</a>
     </nav>
     <div class="nav-actions">
       <a href="https://wa.me/5491178175503" target="_blank" rel="noopener" class="nav-cta">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18a7.9 7.9 0 0 1-4.02-1.1l-.29-.17-2.99.79.8-2.92-.19-.3A7.93 7.93 0 1 1 12 20zm4.36-5.86c-.24-.12-1.4-.69-1.62-.77-.22-.08-.38-.12-.54.12-.16.24-.62.77-.76.93-.14.16-.28.18-.52.06-.24-.12-1-.37-1.9-1.17-.7-.62-1.18-1.39-1.32-1.63-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.47-.4-.4-.54-.41h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.4-.57 1.6-1.12.2-.55.2-1.02.14-1.12-.06-.1-.22-.16-.46-.28z"/></svg>
+        <svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18a7.9 7.9 0 0 1-4.02-1.1l-.29-.17-2.99.79.8-2.92-.19-.3A7.93 7.93 0 1 1 12 20zm4.36-5.86c-.24-.12-1.4-.69-1.62-.77-.22-.08-.38-.12-.54.12-.16.24-.62.77-.76.93-.14.16-.28.18-.52.06-.24-.12-1-.37-1.9-1.17-.7-.62-1.18-1.39-1.32-1.63-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.47-.4-.4-.54-.41h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.4-.57 1.6-1.12.2-.55.2-1.02.14-1.12-.06-.1-.22-.16-.46-.28z"/></svg>
         Consultanos
       </a>
       <button type="button" class="nav-burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
@@ -472,17 +536,19 @@ footer{background:var(--paper);border-top:1px solid var(--line);padding:70px 0 2
       </button>
     </div>
   </div>
-  <div class="mobile-menu" id="mobile-menu">
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Menú móvil">
     <div class="container">
-      <a href="#">Inicio</a>
+      <a href="#" class="current" aria-current="page">Inicio</a>
       <a href="#coleccion">Colección</a>
       <a href="#manifiesto">Por qué barefoot</a>
-      <a href="WebFAQ1.html#talles">Guía de talles</a>
+      <a href="preguntas-frecuentes.html#talles">Guía de talles</a>
       <a href="#contacto">Contacto</a>
       <a href="https://wa.me/5491178175503" target="_blank" rel="noopener" class="nav-cta">Consultanos por WhatsApp</a>
     </div>
-  </div>
+  </nav>
 </header>
+
+<main id="contenido">
 
 <section class="hero">
   <div class="hero-content reveal-stagger">
@@ -490,7 +556,7 @@ footer{background:var(--paper);border-top:1px solid var(--line);padding:70px 0 2
     <h1>Pisá firme.<br>Sentí <em>cada</em> terreno.</h1>
     <p>Calzado barefoot diseñado para reconectar tu pie con el suelo: suela flexible, caja ancha y cero drop, con la resistencia de la montaña.</p>
     <div class="btn-row">
-      <a href="WebCatalogo1.html" class="btn-primary">VER COLECCIÓN</a>
+      <a href="catalogo.html" class="btn-primary">VER COLECCIÓN</a>
       <a href="#manifiesto" class="btn-outline">QUÉ ES BAREFOOT</a>
     </div>
   </div>
@@ -498,10 +564,10 @@ footer{background:var(--paper);border-top:1px solid var(--line);padding:70px 0 2
 
 <div class="trustbar">
   <div class="container reveal-stagger">
-    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><strong>Trato directo</strong><span>Hablás con nosotros</span></div>
-    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20v-6M12 14c-3 0-5.5-2-5.5-5S9 4 12 4s5.5 2 5.5 5-2.5 5-5.5 5z"/><path d="M8 20h8"/></svg><strong>Asesoramos tu talle</strong><span>Antes de que compres</span></div>
-    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg><strong>Diseño argentino</strong><span>Origen andino</span></div>
-    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg><strong>Marca en crecimiento</strong><span>Construyendo paso a paso</span></div>
+    <div class="trust-item"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><strong>Trato directo</strong><span>Hablás con nosotros</span></div>
+    <div class="trust-item"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20v-6M12 14c-3 0-5.5-2-5.5-5S9 4 12 4s5.5 2 5.5 5-2.5 5-5.5 5z"/><path d="M8 20h8"/></svg><strong>Asesoramos tu talle</strong><span>Antes de que compres</span></div>
+    <div class="trust-item"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg><strong>Diseño argentino</strong><span>Origen andino</span></div>
+    <div class="trust-item"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg><strong>Marca en crecimiento</strong><span>Construyendo paso a paso</span></div>
   </div>
 </div>
 
@@ -510,115 +576,110 @@ footer{background:var(--paper);border-top:1px solid var(--line);padding:70px 0 2
     <div class="section-head">
       <div>
         <div class="section-eyebrow">COLECCIÓN</div>
-        <div class="section-title">Los más elegidos</div>
+        <h2 class="section-title">Los más elegidos</h2>
       </div>
-      <a href="WebCatalogo1.html" class="section-link">VER TODO EL CATÁLOGO →</a>
+      <a href="catalogo.html" class="section-link">VER TODO EL CATÁLOGO →</a>
     </div>
 
     <div class="filter-row">
-      <button type="button" class="filter-pill active" data-filter="todos">TODOS</button>
-      <button type="button" class="filter-pill" data-filter="trail">TRAIL</button>
-      <button type="button" class="filter-pill" data-filter="urbana">URBANA</button>
-      <button type="button" class="filter-pill" data-filter="agua">AGUA</button>
+      <button type="button" class="filter-pill active" aria-pressed="true" data-filter="todos">TODOS</button>
+      <button type="button" class="filter-pill" aria-pressed="false" data-filter="trail">TRAIL</button>
+      <button type="button" class="filter-pill" aria-pressed="false" data-filter="urbana">URBANA</button>
+      <button type="button" class="filter-pill" aria-pressed="false" data-filter="agua">AGUA</button>
     </div>
 
     <div class="grid grid-5 reveal-stagger" id="product-grid">
 
       <!-- Modelo 1 - inspirado en trail runner de cordones, suela con tacos -->
       <div class="card" data-cat="trail">
-        <a href="WebCumbre1.html" class="card-media">
+        <a href="cumbre.html" class="card-media" data-hover="img/productos/cumbre-hover.jpg">
           <span class="tag">NUEVO</span>
-          <img class="base-img" src="img/productos/cumbre-catalogo.jpg" alt="Aconcagua CUMBRE, zapatilla trail negra con suela naranja" loading="lazy">
-          <img class="hover-img" src="img/productos/cumbre-hover.jpg" alt="Aconcagua CUMBRE, vista de suela" loading="lazy">
+          <img class="base-img" src="img/productos/cumbre-catalogo.jpg" alt="Aconcagua CUMBRE, zapatilla trail negra con suela naranja" loading="lazy" width="900" height="900" decoding="async">
         </a>
         <div class="card-body">
           <div class="card-cat" data-c="trail">Trail</div>
-          <a href="WebCumbre1.html" class="card-title" style="display:block;">CUMBRE — Zapatilla Trail</a>
-          <div class="soon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>COMPRA ONLINE · PRÓXIMAMENTE</div>
+          <a href="cumbre.html" class="card-title" style="display:block;">CUMBRE — Zapatilla Trail</a>
+          <div class="soon-badge"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>COMPRA ONLINE · PRÓXIMAMENTE</div>
           <div class="price-row"><span class="price-label">Desde</span><span class="price-now" data-price="cumbre">$99.900</span></div>
-          <div class="swatches">
+          <div class="swatches" aria-hidden="true">
             <div class="swatch" style="background:#1c1a17"></div>
             <div class="swatch" style="background:#c96a35"></div>
           </div>
-          <a href="https://wa.me/5491178175503?text=Hola%2C%20quiero%20consultar%20por%20las%20Aconcagua%20CUMBRE" target="_blank" rel="noopener" class="card-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18a7.9 7.9 0 0 1-4.02-1.1l-.29-.17-2.99.79.8-2.92-.19-.3A7.93 7.93 0 1 1 12 20zm4.36-5.86c-.24-.12-1.4-.69-1.62-.77-.22-.08-.38-.12-.54.12-.16.24-.62.77-.76.93-.14.16-.28.18-.52.06-.24-.12-1-.37-1.9-1.17-.7-.62-1.18-1.39-1.32-1.63-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.47-.4-.4-.54-.41h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.4-.57 1.6-1.12.2-.55.2-1.02.14-1.12-.06-.1-.22-.16-.46-.28z"/></svg>CONSULTAR POR WHATSAPP</a>
+          <a href="https://wa.me/5491178175503?text=Hola%2C%20quiero%20consultar%20por%20las%20Aconcagua%20CUMBRE" target="_blank" rel="noopener" class="card-btn"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18a7.9 7.9 0 0 1-4.02-1.1l-.29-.17-2.99.79.8-2.92-.19-.3A7.93 7.93 0 1 1 12 20zm4.36-5.86c-.24-.12-1.4-.69-1.62-.77-.22-.08-.38-.12-.54.12-.16.24-.62.77-.76.93-.14.16-.28.18-.52.06-.24-.12-1-.37-1.9-1.17-.7-.62-1.18-1.39-1.32-1.63-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.47-.4-.4-.54-.41h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.4-.57 1.6-1.12.2-.55.2-1.02.14-1.12-.06-.1-.22-.16-.46-.28z"/></svg>CONSULTAR POR WHATSAPP</a>
         </div>
       </div>
 
       <!-- Modelo 2 - misma familia trail runner, colorway clara con suela tono cobre -->
       <div class="card" data-cat="trail">
-        <a href="WebDuna1.html" class="card-media">
-          <img class="base-img" src="img/productos/duna-catalogo.jpg" alt="Aconcagua DUNA, zapatilla trail beige con suela cobre" loading="lazy">
-          <img class="hover-img" src="img/productos/duna-hover.jpg" alt="Aconcagua DUNA, vista de suela" loading="lazy">
+        <a href="duna.html" class="card-media" data-hover="img/productos/duna-hover.jpg">
+          <img class="base-img" src="img/productos/duna-catalogo.jpg" alt="Aconcagua DUNA, zapatilla trail beige con suela cobre" loading="lazy" width="900" height="900" decoding="async">
         </a>
         <div class="card-body">
           <div class="card-cat" data-c="trail">Trail</div>
-          <a href="WebDuna1.html" class="card-title" style="display:block;">DUNA — Zapatilla Trail</a>
-          <div class="soon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>COMPRA ONLINE · PRÓXIMAMENTE</div>
+          <a href="duna.html" class="card-title" style="display:block;">DUNA — Zapatilla Trail</a>
+          <div class="soon-badge"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>COMPRA ONLINE · PRÓXIMAMENTE</div>
           <div class="price-row"><span class="price-label">Desde</span><span class="price-now" data-price="duna">$99.900</span></div>
-          <div class="swatches">
+          <div class="swatches" aria-hidden="true">
             <div class="swatch" style="background:#c9a876"></div>
             <div class="swatch" style="background:#c9752f"></div>
           </div>
-          <a href="https://wa.me/5491178175503?text=Hola%2C%20quiero%20consultar%20por%20las%20Aconcagua%20DUNA" target="_blank" rel="noopener" class="card-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18a7.9 7.9 0 0 1-4.02-1.1l-.29-.17-2.99.79.8-2.92-.19-.3A7.93 7.93 0 1 1 12 20zm4.36-5.86c-.24-.12-1.4-.69-1.62-.77-.22-.08-.38-.12-.54.12-.16.24-.62.77-.76.93-.14.16-.28.18-.52.06-.24-.12-1-.37-1.9-1.17-.7-.62-1.18-1.39-1.32-1.63-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.47-.4-.4-.54-.41h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.4-.57 1.6-1.12.2-.55.2-1.02.14-1.12-.06-.1-.22-.16-.46-.28z"/></svg>CONSULTAR POR WHATSAPP</a>
+          <a href="https://wa.me/5491178175503?text=Hola%2C%20quiero%20consultar%20por%20las%20Aconcagua%20DUNA" target="_blank" rel="noopener" class="card-btn"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18a7.9 7.9 0 0 1-4.02-1.1l-.29-.17-2.99.79.8-2.92-.19-.3A7.93 7.93 0 1 1 12 20zm4.36-5.86c-.24-.12-1.4-.69-1.62-.77-.22-.08-.38-.12-.54.12-.16.24-.62.77-.76.93-.14.16-.28.18-.52.06-.24-.12-1-.37-1.9-1.17-.7-.62-1.18-1.39-1.32-1.63-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.47-.4-.4-.54-.41h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.4-.57 1.6-1.12.2-.55.2-1.02.14-1.12-.06-.1-.22-.16-.46-.28z"/></svg>CONSULTAR POR WHATSAPP</a>
         </div>
       </div>
 
       <!-- Modelo 3 - inspirado en zapato de agua tipo calcetín, sin cordones, con relieve tipo aleta -->
       <div class="card" data-cat="agua">
-        <a href="WebGlaciar1.html" class="card-media">
+        <a href="glaciar.html" class="card-media" data-hover="img/productos/glaciar-hover.jpg">
           <span class="tag">ACUÁTICA</span>
-          <img class="base-img" src="img/productos/glaciar-catalogo.jpg" alt="Aconcagua GLACIAR, zapato acuatico negro y blanco" loading="lazy">
-          <img class="hover-img" src="img/productos/glaciar-hover.jpg" alt="Aconcagua GLACIAR, vista de suela" loading="lazy">
+          <img class="base-img" src="img/productos/glaciar-catalogo.jpg" alt="Aconcagua GLACIAR, zapato acuatico negro y blanco" loading="lazy" width="800" height="800" decoding="async">
         </a>
         <div class="card-body">
           <div class="card-cat" data-c="agua">Agua</div>
-          <a href="WebGlaciar1.html" class="card-title" style="display:block;">GLACIAR — Zapato Acuático</a>
-          <div class="soon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>COMPRA ONLINE · PRÓXIMAMENTE</div>
+          <a href="glaciar.html" class="card-title" style="display:block;">GLACIAR — Zapato Acuático</a>
+          <div class="soon-badge"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>COMPRA ONLINE · PRÓXIMAMENTE</div>
           <div class="price-row"><span class="price-label">Desde</span><span class="price-now" data-price="glaciar">$79.900</span></div>
-          <div class="swatches">
+          <div class="swatches" aria-hidden="true">
             <div class="swatch" style="background:#17140f"></div>
             <div class="swatch" style="background:#e8e6df"></div>
           </div>
-          <a href="https://wa.me/5491178175503?text=Hola%2C%20quiero%20consultar%20por%20las%20Aconcagua%20GLACIAR" target="_blank" rel="noopener" class="card-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18a7.9 7.9 0 0 1-4.02-1.1l-.29-.17-2.99.79.8-2.92-.19-.3A7.93 7.93 0 1 1 12 20zm4.36-5.86c-.24-.12-1.4-.69-1.62-.77-.22-.08-.38-.12-.54.12-.16.24-.62.77-.76.93-.14.16-.28.18-.52.06-.24-.12-1-.37-1.9-1.17-.7-.62-1.18-1.39-1.32-1.63-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.47-.4-.4-.54-.41h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.4-.57 1.6-1.12.2-.55.2-1.02.14-1.12-.06-.1-.22-.16-.46-.28z"/></svg>CONSULTAR POR WHATSAPP</a>
+          <a href="https://wa.me/5491178175503?text=Hola%2C%20quiero%20consultar%20por%20las%20Aconcagua%20GLACIAR" target="_blank" rel="noopener" class="card-btn"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18a7.9 7.9 0 0 1-4.02-1.1l-.29-.17-2.99.79.8-2.92-.19-.3A7.93 7.93 0 1 1 12 20zm4.36-5.86c-.24-.12-1.4-.69-1.62-.77-.22-.08-.38-.12-.54.12-.16.24-.62.77-.76.93-.14.16-.28.18-.52.06-.24-.12-1-.37-1.9-1.17-.7-.62-1.18-1.39-1.32-1.63-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.47-.4-.4-.54-.41h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.4-.57 1.6-1.12.2-.55.2-1.02.14-1.12-.06-.1-.22-.16-.46-.28z"/></svg>CONSULTAR POR WHATSAPP</a>
         </div>
       </div>
 
       <!-- Modelo 4 - inspirado en zapatilla de punto baja, colorway clara con suela tono cobre -->
       <div class="card" data-cat="urbana">
-        <a href="WebPampa1.html" class="card-media">
-          <img class="base-img" src="img/productos/pampa-catalogo.jpg" alt="Aconcagua PAMPA, zapatilla tejida color piedra con suela gum" loading="lazy">
-          <img class="hover-img" src="img/productos/pampa-hover.jpg" alt="Aconcagua PAMPA, vista de suela" loading="lazy">
+        <a href="pampa.html" class="card-media" data-hover="img/productos/pampa-hover.jpg">
+          <img class="base-img" src="img/productos/pampa-catalogo.jpg" alt="Aconcagua PAMPA, zapatilla tejida color piedra con suela gum" loading="lazy" width="900" height="900" decoding="async">
         </a>
         <div class="card-body">
           <div class="card-cat" data-c="urbana">Urbana</div>
-          <a href="WebPampa1.html" class="card-title" style="display:block;">PAMPA — Zapatilla Tejida</a>
-          <div class="soon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>COMPRA ONLINE · PRÓXIMAMENTE</div>
+          <a href="pampa.html" class="card-title" style="display:block;">PAMPA — Zapatilla Tejida</a>
+          <div class="soon-badge"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>COMPRA ONLINE · PRÓXIMAMENTE</div>
           <div class="price-row"><span class="price-label">Desde</span><span class="price-now" data-price="pampa">$89.900</span></div>
-          <div class="swatches">
+          <div class="swatches" aria-hidden="true">
             <div class="swatch" style="background:#c4bdae"></div>
             <div class="swatch" style="background:#b97a4a"></div>
           </div>
-          <a href="https://wa.me/5491178175503?text=Hola%2C%20quiero%20consultar%20por%20las%20Aconcagua%20PAMPA" target="_blank" rel="noopener" class="card-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18a7.9 7.9 0 0 1-4.02-1.1l-.29-.17-2.99.79.8-2.92-.19-.3A7.93 7.93 0 1 1 12 20zm4.36-5.86c-.24-.12-1.4-.69-1.62-.77-.22-.08-.38-.12-.54.12-.16.24-.62.77-.76.93-.14.16-.28.18-.52.06-.24-.12-1-.37-1.9-1.17-.7-.62-1.18-1.39-1.32-1.63-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.47-.4-.4-.54-.41h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.4-.57 1.6-1.12.2-.55.2-1.02.14-1.12-.06-.1-.22-.16-.46-.28z"/></svg>CONSULTAR POR WHATSAPP</a>
+          <a href="https://wa.me/5491178175503?text=Hola%2C%20quiero%20consultar%20por%20las%20Aconcagua%20PAMPA" target="_blank" rel="noopener" class="card-btn"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18a7.9 7.9 0 0 1-4.02-1.1l-.29-.17-2.99.79.8-2.92-.19-.3A7.93 7.93 0 1 1 12 20zm4.36-5.86c-.24-.12-1.4-.69-1.62-.77-.22-.08-.38-.12-.54.12-.16.24-.62.77-.76.93-.14.16-.28.18-.52.06-.24-.12-1-.37-1.9-1.17-.7-.62-1.18-1.39-1.32-1.63-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.47-.4-.4-.54-.41h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.4-.57 1.6-1.12.2-.55.2-1.02.14-1.12-.06-.1-.22-.16-.46-.28z"/></svg>CONSULTAR POR WHATSAPP</a>
         </div>
       </div>
 
       <!-- Modelo 5 - misma familia tejida, colorway oscura tono sobre tono -->
       <div class="card" data-cat="urbana">
-        <a href="WebNoche1.html" class="card-media">
+        <a href="noche.html" class="card-media" data-hover="img/productos/noche-hover.jpg">
           <span class="tag">BEST SELLER</span>
-          <img class="base-img" src="img/productos/noche-catalogo.jpg" alt="Aconcagua NOCHE, zapatilla tejida negra con suela gum" loading="lazy">
-          <img class="hover-img" src="img/productos/noche-hover.jpg" alt="Aconcagua NOCHE, vista de suela" loading="lazy">
+          <img class="base-img" src="img/productos/noche-catalogo.jpg" alt="Aconcagua NOCHE, zapatilla tejida negra con suela gum" loading="lazy" width="900" height="900" decoding="async">
         </a>
         <div class="card-body">
           <div class="card-cat" data-c="urbana">Urbana</div>
-          <a href="WebNoche1.html" class="card-title" style="display:block;">NOCHE — Zapatilla Tejida</a>
-          <div class="soon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>COMPRA ONLINE · PRÓXIMAMENTE</div>
+          <a href="noche.html" class="card-title" style="display:block;">NOCHE — Zapatilla Tejida</a>
+          <div class="soon-badge"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>COMPRA ONLINE · PRÓXIMAMENTE</div>
           <div class="price-row"><span class="price-label">Desde</span><span class="price-now" data-price="noche">$89.900</span></div>
-          <div class="swatches">
+          <div class="swatches" aria-hidden="true">
             <div class="swatch" style="background:#17140f"></div>
             <div class="swatch" style="background:#a9784f"></div>
           </div>
-          <a href="https://wa.me/5491178175503?text=Hola%2C%20quiero%20consultar%20por%20las%20Aconcagua%20NOCHE" target="_blank" rel="noopener" class="card-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18a7.9 7.9 0 0 1-4.02-1.1l-.29-.17-2.99.79.8-2.92-.19-.3A7.93 7.93 0 1 1 12 20zm4.36-5.86c-.24-.12-1.4-.69-1.62-.77-.22-.08-.38-.12-.54.12-.16.24-.62.77-.76.93-.14.16-.28.18-.52.06-.24-.12-1-.37-1.9-1.17-.7-.62-1.18-1.39-1.32-1.63-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.47-.4-.4-.54-.41h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.4-.57 1.6-1.12.2-.55.2-1.02.14-1.12-.06-.1-.22-.16-.46-.28z"/></svg>CONSULTAR POR WHATSAPP</a>
+          <a href="https://wa.me/5491178175503?text=Hola%2C%20quiero%20consultar%20por%20las%20Aconcagua%20NOCHE" target="_blank" rel="noopener" class="card-btn"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18a7.9 7.9 0 0 1-4.02-1.1l-.29-.17-2.99.79.8-2.92-.19-.3A7.93 7.93 0 1 1 12 20zm4.36-5.86c-.24-.12-1.4-.69-1.62-.77-.22-.08-.38-.12-.54.12-.16.24-.62.77-.76.93-.14.16-.28.18-.52.06-.24-.12-1-.37-1.9-1.17-.7-.62-1.18-1.39-1.32-1.63-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.47-.4-.4-.54-.41h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.4-.57 1.6-1.12.2-.55.2-1.02.14-1.12-.06-.1-.22-.16-.46-.28z"/></svg>CONSULTAR POR WHATSAPP</a>
         </div>
       </div>
 
@@ -626,36 +687,36 @@ footer{background:var(--paper);border-top:1px solid var(--line);padding:70px 0 2
   </div>
 </section>
 
-<div class="topo-divider" aria-hidden="true"><svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,30 Q150,8 300,30 T600,30 T900,30 T1200,30"/><path d="M0,42 Q150,26 300,42 T600,42 T900,42 T1200,42"/><path d="M0,18 Q150,2 300,18 T600,18 T900,18 T1200,18"/></svg></div>
+<div class="topo-divider" aria-hidden="true"><svg aria-hidden="true" viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,30 Q150,8 300,30 T600,30 T900,30 T1200,30"/><path d="M0,42 Q150,26 300,42 T600,42 T900,42 T1200,42"/><path d="M0,18 Q150,2 300,18 T600,18 T900,18 T1200,18"/></svg></div>
 
 <section class="section reveal" id="diseno">
   <div class="container">
     <div class="section-head">
       <div>
         <div class="section-eyebrow">DISEÑO</div>
-        <div class="section-title">Pensado desde el pie hacia arriba</div>
+        <h2 class="section-title">Pensado desde el pie hacia arriba</h2>
       </div>
     </div>
     <div class="feature-grid reveal-stagger">
       <figure class="feature-cell feature-hero">
-        <img src="img/campania/grid/diseno-01-flexibilidad.jpg" alt="Flexibilidad: el calzado Aconcagua PAMPA se adapta al movimiento natural del pie" loading="lazy">
-        <figcaption class="feature-cell-caption"><h4>FLEXIBILIDAD</h4><p>Se adapta al movimiento natural de tu pie.</p></figcaption>
+        <img src="img/campania/grid/diseno-01-flexibilidad.jpg" srcset="img/campania/grid/diseno-01-flexibilidad.jpg 800w, img/campania/grid/diseno-01-flexibilidad-1200.jpg 1200w" sizes="(min-width:981px) 600px, 100vw" alt="Flexibilidad: el calzado Aconcagua PAMPA se adapta al movimiento natural del pie" loading="lazy" width="800" height="800" decoding="async">
+        <figcaption class="feature-cell-caption"><h3>FLEXIBILIDAD</h3><p>Se adapta al movimiento natural de tu pie.</p></figcaption>
       </figure>
       <figure class="feature-cell">
-        <img src="img/campania/grid/diseno-02-puntera-ancha.jpg" alt="Puntera ancha: comparación entre un pie descalzo y el calzado Aconcagua PAMPA" loading="lazy">
-        <figcaption class="feature-cell-caption"><h4>PUNTERA ANCHA</h4><p>Permite que tus dedos se extiendan y se muevan libremente.</p></figcaption>
+        <img src="img/campania/grid/diseno-02-puntera-ancha.jpg" alt="Puntera ancha: comparación entre un pie descalzo y el calzado Aconcagua PAMPA" loading="lazy" width="800" height="800" decoding="async">
+        <figcaption class="feature-cell-caption"><h3>PUNTERA ANCHA</h3><p>Permite que tus dedos se extiendan y se muevan libremente.</p></figcaption>
       </figure>
       <figure class="feature-cell">
-        <img src="img/campania/grid/diseno-03-ligera.jpg" alt="Ligera: caminando con el calzado Aconcagua PAMPA en la montaña" loading="lazy">
-        <figcaption class="feature-cell-caption"><h4>LIGERA</h4><p>Menos peso, más libertad.</p></figcaption>
+        <img src="img/campania/grid/diseno-03-ligera.jpg" alt="Ligera: caminando con el calzado Aconcagua PAMPA en la montaña" loading="lazy" width="800" height="800" decoding="async">
+        <figcaption class="feature-cell-caption"><h3>LIGERA</h3><p>Menos peso, más libertad.</p></figcaption>
       </figure>
       <figure class="feature-cell">
-        <img src="img/campania/grid/diseno-04-suela-flexible.jpg" alt="Suela flexible: flexionando el calzado Aconcagua PAMPA con las manos" loading="lazy">
-        <figcaption class="feature-cell-caption"><h4>SUELA FLEXIBLE</h4><p>Se flexiona y se adapta a cada paso.</p></figcaption>
+        <img src="img/campania/grid/diseno-04-suela-flexible.jpg" alt="Suela flexible: flexionando el calzado Aconcagua PAMPA con las manos" loading="lazy" width="800" height="800" decoding="async">
+        <figcaption class="feature-cell-caption"><h3>SUELA FLEXIBLE</h3><p>Se flexiona y se adapta a cada paso.</p></figcaption>
       </figure>
       <figure class="feature-cell">
-        <img src="img/campania/grid/diseno-05-zero-drop.jpg" alt="Zero drop: perfil del calzado Aconcagua PAMPA mostrando la suela plana" loading="lazy">
-        <figcaption class="feature-cell-caption"><h4>ZERO DROP</h4><p>Sin elevación en el talón para una postura natural.</p></figcaption>
+        <img src="img/campania/grid/diseno-05-zero-drop.jpg" alt="Zero drop: perfil del calzado Aconcagua PAMPA mostrando la suela plana" loading="lazy" width="800" height="800" decoding="async">
+        <figcaption class="feature-cell-caption"><h3>ZERO DROP</h3><p>Sin elevación en el talón para una postura natural.</p></figcaption>
       </figure>
     </div>
   </div>
@@ -664,9 +725,9 @@ footer{background:var(--paper);border-top:1px solid var(--line);padding:70px 0 2
 <section class="manifesto reveal" id="manifiesto">
   <div class="container">
     <div class="manifesto-visual">
-      <img src="img/campania/gimnasio-vertical.jpg" alt="Levantando una pesa rusa con Aconcagua CUMBRE, de fondo un gimnasio y la cordillera" loading="lazy">
+      <img src="img/campania/gimnasio-vertical.jpg" srcset="img/campania/gimnasio-vertical.jpg 720w, img/campania/gimnasio-vertical-1080.jpg 1080w" sizes="(min-width:981px) 560px, 100vw" alt="Levantando una pesa rusa con Aconcagua CUMBRE, de fondo un gimnasio y la cordillera" loading="lazy" width="720" height="900" decoding="async">
       <div class="manifesto-badge">
-        <img src="img/brand/isotipo-blanco.png" alt="" width="14" height="16">
+        <img src="img/brand/isotipo-blanco-48.png" alt="" width="14" height="16">
         <span>ACONCAGUA</span>
       </div>
     </div>
@@ -676,9 +737,9 @@ footer{background:var(--paper);border-top:1px solid var(--line);padding:70px 0 2
       <p>Un levantamiento se gana desde el piso. Con cero drop y suela de bajo perfil, el pie apoya plano y estable, sin la inclinación artificial de una zapatilla de running — más contacto, más equilibrio, más fuerza transferida en cada repetición.</p>
       <p>La puntera ancha deja que los dedos se abran y hagan su trabajo: estabilizar. Ideal para sentadillas, peso muerto y trabajo funcional, tanto en el gimnasio como en la montaña.</p>
       <div class="manifesto-stats">
-        <div class="stat"><strong data-count="19" data-suffix="">0</strong><span>MÚSCULOS ACTIVADOS<br>POR PISADA</span></div>
+        <div class="stat"><strong data-count="19" data-suffix="">19</strong><span>MÚSCULOS ACTIVADOS<br>POR PISADA</span></div>
         <div class="stat"><strong data-count="0" data-suffix="mm">0mm</strong><span>DROP EN TODOS<br>LOS MODELOS</span></div>
-        <div class="stat"><strong data-count="100" data-suffix="%">0%</strong><span>ASESORAMIENTO<br>PERSONALIZADO</span></div>
+        <div class="stat"><strong data-count="100" data-suffix="%">100%</strong><span>ASESORAMIENTO<br>PERSONALIZADO</span></div>
       </div>
     </div>
   </div>
@@ -686,51 +747,53 @@ footer{background:var(--paper);border-top:1px solid var(--line);padding:70px 0 2
 
 <section class="section reveal" id="terreno">
   <div class="container">
+    <h2 class="sr-only">Un calzado para cada terreno</h2>
     <div class="feature-grid reveal-stagger">
       <figure class="feature-cell feature-hero">
-        <img src="img/campania/grid/terreno-01-playa.jpg" alt="Aconcagua CUMBRE en la playa, al atardecer" loading="lazy">
-        <figcaption class="feature-cell-caption"><h4>LIBERTAD EN LA PLAYA</h4></figcaption>
+        <img src="img/campania/grid/terreno-01-playa.jpg" srcset="img/campania/grid/terreno-01-playa.jpg 800w, img/campania/grid/terreno-01-playa-1200.jpg 1200w" sizes="(min-width:981px) 600px, 100vw" alt="Aconcagua CUMBRE en la playa, al atardecer" loading="lazy" width="800" height="800" decoding="async">
+        <figcaption class="feature-cell-caption"><h3>LIBERTAD EN LA PLAYA</h3></figcaption>
       </figure>
       <figure class="feature-cell">
-        <img src="img/campania/grid/terreno-02-gimnasio.jpg" alt="Aconcagua CUMBRE en el gimnasio, levantando una pesa rusa" loading="lazy">
-        <figcaption class="feature-cell-caption"><h4>CONTROL EN EL GIMNASIO</h4></figcaption>
+        <img src="img/campania/grid/terreno-02-gimnasio.jpg" alt="Aconcagua CUMBRE en el gimnasio, levantando una pesa rusa" loading="lazy" width="800" height="800" decoding="async">
+        <figcaption class="feature-cell-caption"><h3>CONTROL EN EL GIMNASIO</h3></figcaption>
       </figure>
       <figure class="feature-cell">
-        <img src="img/campania/grid/terreno-03-ciudad.jpg" alt="Aconcagua CUMBRE cruzando una calle en la ciudad" loading="lazy">
-        <figcaption class="feature-cell-caption"><h4>MOVIMIENTO EN LA CIUDAD</h4></figcaption>
+        <img src="img/campania/grid/terreno-03-ciudad.jpg" alt="Aconcagua CUMBRE cruzando una calle en la ciudad" loading="lazy" width="800" height="800" decoding="async">
+        <figcaption class="feature-cell-caption"><h3>MOVIMIENTO EN LA CIUDAD</h3></figcaption>
       </figure>
       <figure class="feature-cell">
-        <img src="img/campania/grid/terreno-04-terreno-natural.jpg" alt="Aconcagua CUMBRE corriendo por un sendero natural" loading="lazy">
-        <figcaption class="feature-cell-caption"><h4>AGILIDAD EN TERRENO NATURAL</h4></figcaption>
+        <img src="img/campania/grid/terreno-04-terreno-natural.jpg" alt="Aconcagua CUMBRE corriendo por un sendero natural" loading="lazy" width="800" height="800" decoding="async">
+        <figcaption class="feature-cell-caption"><h3>AGILIDAD EN TERRENO NATURAL</h3></figcaption>
       </figure>
       <figure class="feature-cell">
-        <img src="img/campania/grid/terreno-05-roca.jpg" alt="Aconcagua CUMBRE con agarre sobre una roca en la montaña" loading="lazy">
-        <figcaption class="feature-cell-caption"><h4>AGARRE EN ROCA</h4></figcaption>
+        <img src="img/campania/grid/terreno-05-roca.jpg" alt="Aconcagua CUMBRE con agarre sobre una roca en la montaña" loading="lazy" width="800" height="800" decoding="async">
+        <figcaption class="feature-cell-caption"><h3>AGARRE EN ROCA</h3></figcaption>
       </figure>
     </div>
   </div>
 </section>
 
-<div class="topo-divider" aria-hidden="true"><svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,20 Q150,40 300,20 T600,20 T900,20 T1200,20"/><path d="M0,32 Q150,52 300,32 T600,32 T900,32 T1200,32"/><path d="M0,8 Q150,28 300,8 T600,8 T900,8 T1200,8"/></svg></div>
+<div class="topo-divider" aria-hidden="true"><svg aria-hidden="true" viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,20 Q150,40 300,20 T600,20 T900,20 T1200,20"/><path d="M0,32 Q150,52 300,32 T600,32 T900,32 T1200,32"/><path d="M0,8 Q150,28 300,8 T600,8 T900,8 T1200,8"/></svg></div>
 
+<h2 class="sr-only">Por qué elegir Aconcagua</h2>
 <div class="benefits-grid reveal-stagger">
   <div class="benefit">
-    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
     <h3>TRATO CERCANO</h3>
     <p>Hablás directo con nosotros, sin bots ni intermediarios.</p>
   </div>
   <div class="benefit">
-    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
     <h3>MARCA EN CRECIMIENTO</h3>
     <p>Estamos construyendo Aconcagua paso a paso, con vos.</p>
   </div>
   <div class="benefit">
-    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
     <h3>ASESORAMIENTO HUMANO</h3>
     <p>Te ayudamos a elegir tu talle por WhatsApp.</p>
   </div>
   <div class="benefit">
-    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
     <h3>DESDE EL INICIO</h3>
     <p>Sumate a los primeros en tener su par Aconcagua.</p>
   </div>
@@ -741,13 +804,13 @@ footer{background:var(--paper);border-top:1px solid var(--line);padding:70px 0 2
     <div class="section-head">
       <div>
         <div class="section-eyebrow">CONTACTO</div>
-        <div class="section-title">Campamento base</div>
+        <h2 class="section-title">Campamento base</h2>
       </div>
     </div>
     <div class="contact-grid">
       <a class="contact-card" href="https://wa.me/5491178175503?text=Hola%2C%20quiero%20hacer%20una%20consulta" target="_blank" rel="noopener">
         <span class="label">WhatsApp</span>
-        <span class="value">+54 9 11 7817-5503</span>
+        <span class="value" data-whatsapp>+54 9 11 7817-5503</span>
         <span class="status"><span class="status-dot"></span>Respondemos en el día</span>
       </a>
       <a class="contact-card" href="https://instagram.com/aconcagua.fit" target="_blank" rel="noopener">
@@ -762,18 +825,20 @@ footer{background:var(--paper);border-top:1px solid var(--line);padding:70px 0 2
 <div class="newsletter reveal">
   <h2>Sumate a la comunidad Aconcagua</h2>
   <p>Recibí novedades, lanzamientos y descuentos exclusivos.</p>
-  <form class="newsletter-form" onsubmit="return false;">
-    <input type="email" placeholder="Tu email">
-    <button type="submit">SUSCRIBIRME</button>
-  </form>
+  <div class="newsletter-actions">
+    <a class="btn-warm" href="https://wa.me/5491178175503?text=Hola%2C%20quiero%20que%20me%20avisen%20de%20lanzamientos%20y%20descuentos" target="_blank" rel="noopener">AVISARME POR WHATSAPP</a>
+    <a class="btn-ghost" href="https://instagram.com/aconcagua.fit" target="_blank" rel="noopener">SEGUIR EN INSTAGRAM</a>
+  </div>
 </div>
+
+</main>
 
 <footer>
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
         <a class="logo" href="index.html" aria-label="Aconcagua — ir al inicio">
-          <img src="img/brand/isotipo-negro.png" alt="Aconcagua" width="34" height="34">
+          <img src="img/brand/isotipo-negro-120.png" alt="Aconcagua" width="34" height="34">
           <span>
             <span class="logo-text" style="font-size:18px;">ACONCAGUA</span>
             <span class="logo-sub">CALZADO BAREFOOT</span>
@@ -785,21 +850,21 @@ footer{background:var(--paper);border-top:1px solid var(--line);padding:70px 0 2
         </div>
       </div>
       <div class="footer-col">
-        <h4>TIENDA</h4>
+        <h2>TIENDA</h2>
         <a href="?cat=trail#coleccion">Trail</a>
         <a href="?cat=urbana#coleccion">Urbana</a>
         <a href="?cat=agua#coleccion">Agua</a>
         <a href="#coleccion">Ver toda la colección</a>
       </div>
       <div class="footer-col">
-        <h4>AYUDA</h4>
-        <a href="WebFAQ1.html#talles">Guía de talles</a>
-        <a href="WebFAQ1.html#cambios">Cambios y devoluciones</a>
-        <a href="WebFAQ1.html">Preguntas frecuentes</a>
+        <h2>AYUDA</h2>
+        <a href="preguntas-frecuentes.html#talles">Guía de talles</a>
+        <a href="preguntas-frecuentes.html#cambios">Cambios y devoluciones</a>
+        <a href="preguntas-frecuentes.html">Preguntas frecuentes</a>
         <a href="https://wa.me/5491178175503?text=Hola%2C%20quiero%20consultar%20el%20estado%20de%20mi%20pedido" target="_blank" rel="noopener">Seguimiento de pedido</a>
       </div>
       <div class="footer-col">
-        <h4>MARCA</h4>
+        <h2>MARCA</h2>
         <a href="#manifiesto">Por qué barefoot</a>
         <a href="#contacto">Contacto</a>
       </div>
@@ -812,7 +877,7 @@ footer{background:var(--paper);border-top:1px solid var(--line);padding:70px 0 2
 </footer>
 
 <a href="https://wa.me/5491178175503?text=Hola%2C%20quiero%20hacer%20una%20consulta" target="_blank" rel="noopener" class="wa-float" aria-label="Consultar por WhatsApp">
-  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18a7.9 7.9 0 0 1-4.02-1.1l-.29-.17-2.99.79.8-2.92-.19-.3A7.93 7.93 0 1 1 12 20zm4.36-5.86c-.24-.12-1.4-.69-1.62-.77-.22-.08-.38-.12-.54.12-.16.24-.62.77-.76.93-.14.16-.28.18-.52.06-.24-.12-1-.37-1.9-1.17-.7-.62-1.18-1.39-1.32-1.63-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.47-.4-.4-.54-.41h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.4-.57 1.6-1.12.2-.55.2-1.02.14-1.12-.06-.1-.22-.16-.46-.28z"/></svg>
+  <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18a7.9 7.9 0 0 1-4.02-1.1l-.29-.17-2.99.79.8-2.92-.19-.3A7.93 7.93 0 1 1 12 20zm4.36-5.86c-.24-.12-1.4-.69-1.62-.77-.22-.08-.38-.12-.54.12-.16.24-.62.77-.76.93-.14.16-.28.18-.52.06-.24-.12-1-.37-1.9-1.17-.7-.62-1.18-1.39-1.32-1.63-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.47-.4-.4-.54-.41h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.4-.57 1.6-1.12.2-.55.2-1.02.14-1.12-.06-.1-.22-.16-.46-.28z"/></svg>
 </a>
 
 <script>
@@ -825,15 +890,17 @@ footer{background:var(--paper);border-top:1px solid var(--line);padding:70px 0 2
   var burger = document.querySelector('.nav-burger');
   var menu = document.getElementById('mobile-menu');
   if(burger && menu){
-    burger.addEventListener('click', function(){
-      var open = menu.classList.toggle('open');
+    var setMenu = function(open){
+      menu.classList.toggle('open', open);
       burger.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
+      burger.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+    };
+    burger.addEventListener('click', function(){ setMenu(!menu.classList.contains('open')); });
     menu.querySelectorAll('a').forEach(function(a){
-      a.addEventListener('click', function(){
-        menu.classList.remove('open');
-        burger.setAttribute('aria-expanded', 'false');
-      });
+      a.addEventListener('click', function(){ setMenu(false); });
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && menu.classList.contains('open')){ setMenu(false); burger.focus(); }
     });
   }
 
@@ -861,7 +928,7 @@ footer{background:var(--paper);border-top:1px solid var(--line);padding:70px 0 2
   }
 
   var stats = document.querySelectorAll('.stat strong[data-count]');
-  if(stats.length){
+  if(stats.length && 'IntersectionObserver' in window){
     var statIO = new IntersectionObserver(function(entries){
       entries.forEach(function(entry){
         if(!entry.isIntersecting) return;
@@ -887,7 +954,11 @@ footer{background:var(--paper);border-top:1px solid var(--line);padding:70px 0 2
   var pills = document.querySelectorAll('.filter-pill');
   var cards = document.querySelectorAll('#product-grid .card');
   function applyFilter(f){
-    pills.forEach(function(p){ p.classList.toggle('active', p.getAttribute('data-filter') === f); });
+    pills.forEach(function(p){
+      var on = p.getAttribute('data-filter') === f;
+      p.classList.toggle('active', on);
+      p.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
     cards.forEach(function(card){
       var show = (f === 'todos') || (card.getAttribute('data-cat') === f);
       card.classList.toggle('hide', !show);
@@ -899,8 +970,21 @@ footer{background:var(--paper);border-top:1px solid var(--line);padding:70px 0 2
     });
   });
 
+  if(window.matchMedia && window.matchMedia('(hover:hover) and (pointer:fine)').matches){
+    document.querySelectorAll('.card-media[data-hover]').forEach(function(media){
+      media.addEventListener('pointerenter', function(){
+        var img = new Image();
+        img.className = 'hover-img';
+        img.alt = '';
+        img.onload = function(){ media.classList.add('hover-ready'); };
+        img.src = media.getAttribute('data-hover');
+        media.appendChild(img);
+      }, {once:true});
+    });
+  }
+
   var catParam = new URLSearchParams(window.location.search).get('cat');
-  if(catParam && document.querySelector('.filter-pill[data-filter="' + catParam + '"]')){
+  if(['trail','urbana','agua'].indexOf(catParam) !== -1){
     applyFilter(catParam);
   }
 })();

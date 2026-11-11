@@ -1,0 +1,84 @@
+{
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+        },
+        {
+          "key": "Cross-Origin-Opener-Policy",
+          "value": "same-origin"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none'; upgrade-insecure-requests"
+        }
+      ]
+    },
+    {
+      "source": "/img/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800, stale-while-revalidate=2592000"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/WebCatalogo1.html",
+      "destination": "/catalogo.html",
+      "permanent": true
+    },
+    {
+      "source": "/WebCumbre1.html",
+      "destination": "/cumbre.html",
+      "permanent": true
+    },
+    {
+      "source": "/WebDuna1.html",
+      "destination": "/duna.html",
+      "permanent": true
+    },
+    {
+      "source": "/WebGlaciar1.html",
+      "destination": "/glaciar.html",
+      "permanent": true
+    },
+    {
+      "source": "/WebPampa1.html",
+      "destination": "/pampa.html",
+      "permanent": true
+    },
+    {
+      "source": "/WebNoche1.html",
+      "destination": "/noche.html",
+      "permanent": true
+    },
+    {
+      "source": "/WebFAQ1.html",
+      "destination": "/preguntas-frecuentes.html",
+      "permanent": true
+    },
+    {
+      "source": "/WebPorque1.html",
+      "destination": "/#manifiesto",
+      "permanent": true
+    }
+  ]
+}
