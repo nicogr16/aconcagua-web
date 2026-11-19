@@ -256,9 +256,6 @@ header.scrolled .nav{padding-top:13px;padding-bottom:13px;}
 .card-body{padding:20px 18px 22px;display:flex;flex-direction:column;flex:1;}
 .card-cat{font-size:11px;letter-spacing:.1em;color:var(--accent-soft);text-transform:uppercase;margin-bottom:6px;}
 .card-title{font-size:15px;line-height:1.3;color:var(--ink);font-weight:600;margin-bottom:10px;min-height:2.6em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
-.price-row{display:flex;align-items:baseline;gap:10px;margin-bottom:14px;}
-.price-label{font-size:10.5px;font-weight:600;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.06em;}
-.price-now{font-size:17px;font-weight:700;color:var(--ink);}
 .swatches{display:flex;gap:6px;margin-bottom:16px;}
 .swatch{width:16px;height:16px;border-radius:50%;border:1px solid var(--outline);}
 .card-btn{
@@ -302,13 +299,6 @@ header.scrolled .nav{padding-top:13px;padding-bottom:13px;}
 .filter-pill[data-filter="urbana"].active{background:var(--accent-warm);border-color:var(--accent-warm);}
 .filter-pill[data-filter="agua"].active{background:var(--accent-water);border-color:var(--accent-water);}
 
-/* "Coming soon" commerce badge */
-.soon-badge{
-  display:inline-flex;align-items:center;gap:6px;
-  font-size:10.5px;letter-spacing:.06em;font-weight:600;color:var(--ink-soft);
-  border:1px dashed var(--outline);border-radius:999px;padding:5px 10px;margin-bottom:12px;
-}
-.soon-badge svg{width:11px;height:11px;flex-shrink:0;color:var(--accent-warm);stroke:var(--accent-warm);}
 
 /* Announcement bar link */
 .topbar a{color:var(--ink);font-weight:700;text-decoration:underline;text-underline-offset:2px;}
@@ -470,7 +460,7 @@ h1,h2,h3{text-wrap:balance;}
 @media(max-width:560px){
   .tag{font-size:11px;}
   .card-cat{font-size:12px;}
-  .price-label,.soon-badge{font-size:11.5px;}
+  .offer-badge,.price-off{font-size:11.5px;}
 }
 
 /* Home — foco sobre la foto, bloque comunidad y hero para celular */
@@ -502,13 +492,20 @@ h1,h2,h3{text-wrap:balance;}
   .feature-cell-caption h3{font-size:13px;}
   .feature-cell-caption p{font-size:11.5px;}
 }
+
+/* Oferta de lanzamiento */
+.offer-badge{display:flex;align-items:center;gap:8px;font-size:11px;letter-spacing:.08em;font-weight:700;text-transform:uppercase;color:var(--accent-warm);margin-bottom:6px;}
+.price-row{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 10px;margin-bottom:14px;}
+.price-was{font-size:13px;color:var(--ink-soft);text-decoration-thickness:1px;}
+.price-now{font-size:19px;font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums;}
+.price-off{background:var(--accent-warm);color:var(--paper);font-size:11px;font-weight:700;letter-spacing:.02em;padding:3px 7px;border-radius:3px;}
 </style>
 </head>
 <body>
 <script>document.documentElement.classList.add('js-ready');</script>
 
 <a class="skip-link" href="#contenido">Saltar al contenido</a>
-<aside class="topbar" aria-label="Aviso">COMPRA ONLINE MUY PRONTO — POR AHORA, COORDINÁ TU PAR POR <a href="https://wa.me/5491178175503" target="_blank" rel="noopener">WHATSAPP</a></aside>
+<aside class="topbar" aria-label="Aviso"><span data-offer-any>PRECIO DE LANZAMIENTO: </span>PARES DESDE <strong data-price-min>$60.000</strong> — PEDÍ EL TUYO POR <a href="https://wa.me/5491178175503" target="_blank" rel="noopener">WHATSAPP</a></aside>
 
 <header>
   <div class="container nav">
@@ -599,8 +596,8 @@ h1,h2,h3{text-wrap:balance;}
         <div class="card-body">
           <div class="card-cat" data-c="trail">Trail</div>
           <a href="cumbre.html" class="card-title" style="display:block;">CUMBRE — Zapatilla Trail</a>
-          <div class="soon-badge"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>COMPRA ONLINE · PRÓXIMAMENTE</div>
-          <div class="price-row"><span class="price-label">Desde</span><span class="price-now" data-price="cumbre">$99.900</span></div>
+          <div class="offer-badge" data-offer="cumbre">Precio de lanzamiento <span class="price-off" data-offer="cumbre" data-price-off="cumbre">−40%</span></div>
+          <div class="price-row"><s class="price-was" data-offer="cumbre"><span class="sr-only">Antes </span><span data-price-was="cumbre">$100.000</span></s><span class="sr-only" data-offer="cumbre">Ahora </span><span class="price-now" data-price="cumbre">$60.000</span></div>
           <div class="swatches" aria-hidden="true">
             <div class="swatch" style="background:#1c1a17"></div>
             <div class="swatch" style="background:#c96a35"></div>
@@ -617,8 +614,8 @@ h1,h2,h3{text-wrap:balance;}
         <div class="card-body">
           <div class="card-cat" data-c="trail">Trail</div>
           <a href="duna.html" class="card-title" style="display:block;">DUNA — Zapatilla Trail</a>
-          <div class="soon-badge"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>COMPRA ONLINE · PRÓXIMAMENTE</div>
-          <div class="price-row"><span class="price-label">Desde</span><span class="price-now" data-price="duna">$99.900</span></div>
+          <div class="offer-badge" data-offer="duna">Precio de lanzamiento <span class="price-off" data-offer="duna" data-price-off="duna">−40%</span></div>
+          <div class="price-row"><s class="price-was" data-offer="duna"><span class="sr-only">Antes </span><span data-price-was="duna">$100.000</span></s><span class="sr-only" data-offer="duna">Ahora </span><span class="price-now" data-price="duna">$60.000</span></div>
           <div class="swatches" aria-hidden="true">
             <div class="swatch" style="background:#c9a876"></div>
             <div class="swatch" style="background:#c9752f"></div>
@@ -636,8 +633,8 @@ h1,h2,h3{text-wrap:balance;}
         <div class="card-body">
           <div class="card-cat" data-c="agua">Agua</div>
           <a href="glaciar.html" class="card-title" style="display:block;">GLACIAR — Zapato Acuático</a>
-          <div class="soon-badge"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>COMPRA ONLINE · PRÓXIMAMENTE</div>
-          <div class="price-row"><span class="price-label">Desde</span><span class="price-now" data-price="glaciar">$79.900</span></div>
+          <div class="offer-badge" data-offer="glaciar">Precio de lanzamiento <span class="price-off" data-offer="glaciar" data-price-off="glaciar">−40%</span></div>
+          <div class="price-row"><s class="price-was" data-offer="glaciar"><span class="sr-only">Antes </span><span data-price-was="glaciar">$100.000</span></s><span class="sr-only" data-offer="glaciar">Ahora </span><span class="price-now" data-price="glaciar">$60.000</span></div>
           <div class="swatches" aria-hidden="true">
             <div class="swatch" style="background:#17140f"></div>
             <div class="swatch" style="background:#e8e6df"></div>
@@ -654,8 +651,8 @@ h1,h2,h3{text-wrap:balance;}
         <div class="card-body">
           <div class="card-cat" data-c="urbana">Urbana</div>
           <a href="pampa.html" class="card-title" style="display:block;">PAMPA — Zapatilla Tejida</a>
-          <div class="soon-badge"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>COMPRA ONLINE · PRÓXIMAMENTE</div>
-          <div class="price-row"><span class="price-label">Desde</span><span class="price-now" data-price="pampa">$89.900</span></div>
+          <div class="offer-badge" data-offer="pampa">Precio de lanzamiento <span class="price-off" data-offer="pampa" data-price-off="pampa">−40%</span></div>
+          <div class="price-row"><s class="price-was" data-offer="pampa"><span class="sr-only">Antes </span><span data-price-was="pampa">$100.000</span></s><span class="sr-only" data-offer="pampa">Ahora </span><span class="price-now" data-price="pampa">$60.000</span></div>
           <div class="swatches" aria-hidden="true">
             <div class="swatch" style="background:#c4bdae"></div>
             <div class="swatch" style="background:#b97a4a"></div>
@@ -673,8 +670,8 @@ h1,h2,h3{text-wrap:balance;}
         <div class="card-body">
           <div class="card-cat" data-c="urbana">Urbana</div>
           <a href="noche.html" class="card-title" style="display:block;">NOCHE — Zapatilla Tejida</a>
-          <div class="soon-badge"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>COMPRA ONLINE · PRÓXIMAMENTE</div>
-          <div class="price-row"><span class="price-label">Desde</span><span class="price-now" data-price="noche">$89.900</span></div>
+          <div class="offer-badge" data-offer="noche">Precio de lanzamiento <span class="price-off" data-offer="noche" data-price-off="noche">−40%</span></div>
+          <div class="price-row"><s class="price-was" data-offer="noche"><span class="sr-only">Antes </span><span data-price-was="noche">$100.000</span></s><span class="sr-only" data-offer="noche">Ahora </span><span class="price-now" data-price="noche">$60.000</span></div>
           <div class="swatches" aria-hidden="true">
             <div class="swatch" style="background:#17140f"></div>
             <div class="swatch" style="background:#a9784f"></div>
