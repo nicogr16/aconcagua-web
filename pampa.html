@@ -258,6 +258,12 @@ h1,h2,h3{text-wrap:balance;}
 .detail-price-row{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 12px;margin-bottom:24px;}
 .price-was{font-size:17px;color:var(--ink-soft);text-decoration-thickness:1px;}
 .price-off{align-self:center;background:var(--accent-warm);color:var(--paper);font-size:12px;font-weight:700;letter-spacing:.02em;padding:4px 8px;border-radius:3px;}
+
+/* Talles en la ficha */
+.size-mini{width:100%;border-collapse:collapse;margin-bottom:12px;font-variant-numeric:tabular-nums;background:var(--paper-raised);border-radius:10px;overflow:hidden;}
+.size-mini th,.size-mini td{padding:9px 4px;text-align:center;font-size:13.5px;color:var(--ink);}
+.size-mini thead th{font-weight:700;border-bottom:1px solid var(--line);}
+.size-mini th[scope="row"]{text-align:left;padding-left:12px;font-size:12px;font-weight:600;color:var(--ink-soft);white-space:nowrap;}
 </style>
 </head>
 <body>
@@ -377,7 +383,14 @@ h1,h2,h3{text-wrap:balance;}
       <div class="accordion">
         <details class="acc-item" open>
           <summary>Guía de talles<span class="acc-plus"></span></summary>
-          <div class="acc-body">No tenemos una tabla de talles publicada todavía — contanos qué número usás normalmente y te ayudamos a definir el talle Aconcagua. <a href="preguntas-frecuentes.html#talles">Ver más en preguntas frecuentes</a>.</div>
+          <div class="acc-body">
+            <table class="size-mini">
+              <caption class="sr-only">Talles de PAMPA y largo de plantilla en centímetros</caption>
+              <thead><tr><th scope="row">Talle</th><th scope="col">38</th><th scope="col">39</th><th scope="col">40</th><th scope="col">41</th><th scope="col">42</th><th scope="col">43</th></tr></thead>
+              <tbody><tr><th scope="row">Plantilla (cm)</th><td>24,5</td><td>25,0</td><td>26,0</td><td>26,5</td><td>27,0</td><td>28,0</td></tr></tbody>
+            </table>
+            Medí tu pie del talón a la punta del dedo más largo y sumale entre 0,5 y 1 cm. Si quedás entre dos talles, escribinos y te ayudamos a elegir. <a href="preguntas-frecuentes.html#talles">Cómo medir tu pie</a>.
+          </div>
         </details>
         <details class="acc-item">
           <summary>Envío y pagos<span class="acc-plus"></span></summary>
