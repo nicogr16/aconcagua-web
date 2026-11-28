@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>NOCHE — Zapatilla Tejida barefoot | Aconcagua</title>
-<meta name="description" content="Zapatilla tejida barefoot negra con suela gum. Cero drop y puntera ancha. Consultá talle y entrega por WhatsApp.">
+<meta name="description" content="Zapatilla tejida barefoot negra con suela gum. Cero drop y puntera ancha. Comprá online con envío a todo el país.">
 <link rel="canonical" href="https://aconcagua.fit/noche.html">
 <meta name="theme-color" content="#F2EEE4">
 <link rel="icon" type="image/png" sizes="32x32" href="img/brand/favicon-32.png">
@@ -15,7 +15,7 @@
 <meta property="og:type" content="product">
 <meta property="og:url" content="https://aconcagua.fit/noche.html">
 <meta property="og:title" content="NOCHE — Zapatilla Tejida — Aconcagua">
-<meta property="og:description" content="Zapatilla tejida barefoot negra con suela gum. Cero drop y puntera ancha. Consultá talle y entrega por WhatsApp.">
+<meta property="og:description" content="Zapatilla tejida barefoot negra con suela gum. Cero drop y puntera ancha. Comprá online con envío a todo el país.">
 <meta property="og:image" content="https://aconcagua.fit/img/productos/noche-catalogo.jpg">
 <meta property="og:image:width" content="900">
 <meta property="og:image:height" content="900">
@@ -264,13 +264,98 @@ h1,h2,h3{text-wrap:balance;}
 .size-mini th,.size-mini td{padding:9px 4px;text-align:center;font-size:13.5px;color:var(--ink);}
 .size-mini thead th{font-weight:700;border-bottom:1px solid var(--line);}
 .size-mini th[scope="row"]{text-align:left;padding-left:12px;font-size:12px;font-weight:600;color:var(--ink-soft);white-space:nowrap;}
+/* Pedido: talle, entrega y total con envío (lógica en envios.js) */
+.pedido{border:1px solid var(--line-strong);border-radius:14px;background:rgba(231,224,208,.5);padding:22px 20px 18px;margin-bottom:30px;}
+.ped-titulo{font-family:Georgia,serif;font-size:19px;font-weight:700;color:var(--ink);margin-bottom:18px;}
+.pedido fieldset{border:0;margin:0 0 20px;padding:0;min-width:0;}
+.ped-label{display:block;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--accent-warm);margin-bottom:10px;padding:0;}
+.ped-talles{display:grid;grid-template-columns:repeat(auto-fit,minmax(36px,1fr));gap:6px;}
+.ped-chip{position:relative;cursor:pointer;}
+.ped-chip input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer;}
+.ped-chip span{display:flex;align-items:center;justify-content:center;height:46px;padding:0 4px;border:1px solid var(--line-strong);border-radius:10px;background:var(--paper);font-size:14.5px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--ink);transition:border-color .2s, background .2s, color .2s;}
+.ped-chip input:checked + span{background:var(--ink);border-color:var(--ink);color:var(--paper);}
+.ped-chip input:focus-visible + span{outline:2px solid var(--accent);outline-offset:2px;}
+.ped-plantilla{font-size:12.5px;color:var(--ink-soft);line-height:1.45;margin:9px 0 0;}
+.ped-opciones{display:flex;flex-direction:column;gap:8px;}
+.ped-opt{display:flex;align-items:flex-start;gap:12px;padding:13px 14px;border:1px solid var(--line-strong);border-radius:10px;background:var(--paper);cursor:pointer;transition:border-color .2s, box-shadow .2s;}
+.ped-opt:has(input:checked){border-color:var(--accent);box-shadow:0 0 0 1px var(--accent);}
+.ped-opt input{accent-color:var(--accent);width:17px;height:17px;margin:2px 0 0;flex-shrink:0;cursor:pointer;}
+.ped-opt-txt{flex:1;font-size:14px;font-weight:600;color:var(--ink);line-height:1.35;}
+.ped-opt-txt small{display:block;font-size:12.5px;font-weight:400;color:var(--ink-soft);margin-top:2px;}
+.ped-opt-precio{font-size:13.5px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--ink);white-space:nowrap;padding-top:1px;}
+.ped-field{display:block;margin-bottom:20px;}
+.ped-field[hidden]{display:none;}
+.ped-field select{width:100%;height:48px;padding:0 40px 0 14px;border:1px solid var(--line-strong);border-radius:10px;background:var(--paper) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%2359554A' stroke-width='1.6'/%3E%3C/svg%3E") no-repeat right 15px center;-webkit-appearance:none;appearance:none;font:inherit;font-size:16px;color:var(--ink);cursor:pointer;}
+@media(hover:hover){
+  .ped-chip:hover span,.ped-opt:hover,.ped-field select:hover{border-color:var(--ink-soft);}
+}
+/* Datos de despacho (los campos los arma envios.js) */
+.ped-campos{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px 10px;}
+.ped-input{grid-column:1/-1;display:flex;flex-direction:column;justify-content:flex-end;gap:5px;min-width:0;}
+.ped-input[hidden]{display:none;}
+.ped-input.t2{grid-column:span 2;}
+.ped-input.t4{grid-column:span 4;}
+.ped-input span{font-size:12.5px;color:var(--ink-soft);line-height:1.3;}
+.ped-input input,.ped-input textarea{width:100%;height:46px;padding:0 12px;border:1px solid var(--line-strong);border-radius:10px;background:var(--paper);font:inherit;font-size:16px;color:var(--ink);}
+.ped-input textarea{height:auto;padding:10px 12px;resize:vertical;}
+.ped-input input::placeholder{color:var(--ink-soft);font-size:13px;}
+.ped-input [aria-invalid="true"]{border-color:#8A3B21;box-shadow:0 0 0 1px #8A3B21;}
+.ped-privacidad{font-size:12px;color:var(--ink-soft);line-height:1.45;margin-top:10px;}
+/* Confirmación del pedido y talles sin stock */
+.pedido button.btn-primary{font-family:inherit;line-height:normal;cursor:pointer;}
+.pedido .btn-primary[hidden]{display:none;}
+.pedido .btn-primary:disabled{opacity:.6;cursor:wait;transform:none;box-shadow:none;}
+.ped-chip input:disabled{cursor:not-allowed;}
+.ped-chip input:disabled + span{background:#D9D5CB;border-color:#D9D5CB;color:#8F8B81;}
+.ped-aviso{font-size:13.5px;color:var(--ink-soft);line-height:1.5;margin-bottom:12px;}
+.ped-trampa{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;}
+.pedido.ped-ok > :not(.ped-listo){display:none;}
+.ped-listo:focus{outline:none;}
+.ped-listo .ped-titulo{margin-bottom:6px;}
+.ped-numero{font-size:15px;color:var(--ink);margin-bottom:2px;}
+.ped-detalle{font-size:13.5px;color:var(--ink-soft);margin-bottom:16px;}
+.ped-listo .ped-alias{font-size:13px;color:var(--ink-soft);margin-bottom:14px;}
+.ped-listo .ped-pasos{font-size:13.5px;color:var(--ink-soft);line-height:1.55;margin-bottom:18px;}
+.ped-nuevo{display:block;margin:0 auto;font:inherit;font-size:13px;color:var(--accent-soft);background:none;border:0;border-bottom:1px solid currentColor;padding:4px 0;cursor:pointer;}
+/* Lista con búsqueda y avisos */
+.ped-input[data-grupo="domicilio"]{position:relative;}
+.ped-lista{position:absolute;top:100%;left:0;z-index:20;width:max(100%,250px);max-width:calc(100vw - 72px);max-height:230px;overflow-y:auto;margin:4px 0 0;padding:4px;list-style:none;background:#fff;border:1px solid var(--line-strong);border-radius:10px;box-shadow:var(--shadow);}
+.ped-lista[hidden]{display:none;}
+.ped-lista li{padding:10px;border-radius:7px;font-size:14.5px;color:var(--ink);cursor:pointer;line-height:1.3;}
+.ped-lista li small{display:block;font-size:12px;color:var(--ink-soft);}
+.ped-lista li[aria-selected="true"]{background:var(--paper-raised);}
+@media(hover:hover){.ped-lista li:hover{background:var(--paper-raised);}}
+.toast{position:fixed;left:50%;bottom:24px;z-index:90;width:min(420px,calc(100vw - 32px));padding:14px 16px;border-radius:10px;background:var(--ink);color:#fff;font-size:14px;line-height:1.45;box-shadow:var(--shadow);cursor:pointer;opacity:0;visibility:hidden;transform:translate(-50%,12px);transition:opacity .25s ease,transform .25s ease,visibility 0s linear .25s;}
+.toast.visible{opacity:1;visibility:visible;transform:translate(-50%,0);transition:opacity .25s ease,transform .25s ease;}
+.toast[data-tipo="error"]{background:#8A3B21;}
+.toast[data-tipo="ok"]{background:var(--accent-soft);}
+@media(max-width:560px){.toast{bottom:84px;}}
+@media(prefers-reduced-motion:reduce){.toast,.toast.visible{transition:none;}}
+.ped-resumen{margin:0 0 16px;padding-top:14px;border-top:1px dashed var(--line-strong);display:grid;gap:7px;font-variant-numeric:tabular-nums;}
+.ped-resumen div{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:14px;color:var(--ink-soft);}
+.ped-resumen dd{margin:0;color:var(--ink);font-weight:600;text-align:right;}
+.ped-resumen .ped-total{padding-top:8px;margin-top:2px;border-top:1px solid var(--line);color:var(--ink);font-weight:700;font-size:15px;}
+.ped-resumen .ped-total dd{font-family:Georgia,serif;font-size:24px;}
+.ped-error{min-height:0;font-size:13px;font-weight:600;color:#8A3B21;margin:0 0 10px;}
+.ped-error:empty{display:none;}
+.ped-campos .ped-error{grid-column:1/-1;margin:-4px 0 0;}
+.pedido .btn-primary{margin-bottom:16px;}
+.ped-pago{font-size:13px;color:var(--ink-soft);line-height:1.55;}
+.ped-alias{display:flex;align-items:center;flex-wrap:wrap;gap:6px 10px;margin-bottom:10px;}
+.ped-alias strong{color:var(--ink);font-size:14.5px;letter-spacing:.02em;}
+.ped-copiar{font:inherit;font-size:12px;font-weight:600;color:var(--accent-soft);background:transparent;border:1px solid var(--line-strong);border-radius:999px;padding:5px 12px;min-height:32px;cursor:pointer;transition:border-color .2s, color .2s;}
+.ped-copiar:hover{border-color:var(--accent);color:var(--ink);}
+.ped-pasos{margin:0;padding-left:18px;display:grid;gap:3px;}
+@media(max-width:560px){
+  .pedido{padding:20px 16px 16px;}
+}
 </style>
 </head>
 <body>
 <script>document.documentElement.classList.add('js-ready');</script>
 
 <a class="skip-link" href="#contenido">Saltar al contenido</a>
-<aside class="topbar" aria-label="Aviso"><span data-offer-any>PRECIO DE LANZAMIENTO: </span>PARES DESDE <strong data-price-min>$60.000</strong> — PEDÍ EL TUYO POR <a href="https://wa.me/5491178175503" target="_blank" rel="noopener">WHATSAPP</a></aside>
+<aside class="topbar" aria-label="Aviso"><span data-offer-any>PRECIO DE LANZAMIENTO: </span>PARES DESDE <strong data-price-min>$60.000</strong> — COMPRÁ ONLINE CON ENVÍO A TODO EL PAÍS</aside>
 
 <header>
   <div class="container nav">
@@ -365,6 +450,59 @@ h1,h2,h3{text-wrap:balance;}
         <span>Negro / suela gum</span>
       </div>
 
+      <form class="pedido" data-pedido="noche" data-nombre="NOCHE" aria-labelledby="ped-titulo">
+        <h2 class="ped-titulo" id="ped-titulo">Armá tu pedido</h2>
+
+        <fieldset>
+          <legend class="ped-label">Talle</legend>
+          <div class="ped-talles">
+            <label class="ped-chip"><input type="radio" name="talle" value="38"><span>38</span></label>
+            <label class="ped-chip"><input type="radio" name="talle" value="39"><span>39</span></label>
+            <label class="ped-chip"><input type="radio" name="talle" value="40"><span>40</span></label>
+            <label class="ped-chip"><input type="radio" name="talle" value="41"><span>41</span></label>
+            <label class="ped-chip"><input type="radio" name="talle" value="42"><span>42</span></label>
+            <label class="ped-chip"><input type="radio" name="talle" value="43"><span>43</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend class="ped-label">Entrega</legend>
+          <div class="ped-opciones">
+            <label class="ped-opt" data-ped-opcion="domicilio"><input type="radio" name="entrega" value="domicilio" checked><span class="ped-opt-txt">Envío a domicilio<small>Correo Argentino, 2 a 5 días hábiles</small></span><span class="ped-opt-precio" data-ped-costo="domicilio"></span></label>
+            <label class="ped-opt" data-ped-opcion="sucursal"><input type="radio" name="entrega" value="sucursal"><span class="ped-opt-txt">Envío a sucursal del Correo<small>Lo retirás en la sucursal que te quede cómoda</small></span><span class="ped-opt-precio" data-ped-costo="sucursal"></span></label>
+            <label class="ped-opt" data-ped-opcion="retiro"><input type="radio" name="entrega" value="retiro"><span class="ped-opt-txt">Retiro en persona<small data-retiro-zona>Ciudad Evita, La Matanza</small></span><span class="ped-opt-precio">Gratis</span></label>
+          </div>
+        </fieldset>
+
+        <label class="ped-field" data-ped-destino>
+          <span class="ped-label">¿A dónde te lo enviamos?</span>
+          <select name="destino"><option value="">Elegí tu provincia o zona</option></select>
+        </label>
+
+        <dl class="ped-resumen">
+          <div><dt>NOCHE</dt><dd data-ped-producto data-price="noche">$60.000</dd></div>
+          <div><dt>Envío</dt><dd data-ped-envio>Elegí el destino</dd></div>
+          <div class="ped-total"><dt>Total</dt><dd data-ped-total>—</dd></div>
+        </dl>
+
+        <p class="ped-error" data-ped-error role="alert"></p>
+
+        <button type="submit" class="btn-primary" data-ped-enviar>CONFIRMAR PEDIDO</button>
+        <p class="ped-aviso" data-ped-aviso hidden></p>
+        <a href="https://wa.me/5491178175503?text=Hola%2C%20quiero%20consultar%20por%20las%20Aconcagua%20NOCHE" target="_blank" rel="noopener" class="btn-primary" data-ped-consulta hidden>
+          <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18a7.9 7.9 0 0 1-4.02-1.1l-.29-.17-2.99.79.8-2.92-.19-.3A7.93 7.93 0 1 1 12 20zm4.36-5.86c-.24-.12-1.4-.69-1.62-.77-.22-.08-.38-.12-.54.12-.16.24-.62.77-.76.93-.14.16-.28.18-.52.06-.24-.12-1-.37-1.9-1.17-.7-.62-1.18-1.39-1.32-1.63-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.47-.4-.4-.54-.41h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.4-.57 1.6-1.12.2-.55.2-1.02.14-1.12-.06-.1-.22-.16-.46-.28z"/></svg>
+          <span>CONSULTAR POR WHATSAPP</span>
+        </a>
+
+        <div class="ped-pago" data-ped-pago>
+          <ol class="ped-pasos">
+            <li>Confirmás el pedido y te mostramos el total y el alias.</li>
+            <li>Transferís y nos mandás el comprobante por WhatsApp.</li>
+            <li>Despachamos y te pasamos el número de seguimiento.</li>
+          </ol>
+        </div>
+      </form>
+
       <p class="desc">NOCHE es la versión oscura de nuestra tejida urbana: parte superior de punto ajustado, suela gum de bajo perfil y un perfil minimalista que combina con cualquier look. La opción para el día a día en la ciudad sin resignar la libertad del barefoot.</p>
 
       <ul class="feature-list">
@@ -373,12 +511,6 @@ h1,h2,h3{text-wrap:balance;}
         <li><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M4 12c2-4 4-6 8-6s6 2 8 6c-2 4-4 6-8 6s-6-2-8-6z"/><circle cx="12" cy="12" r="2"/></svg><span><strong>Suela flexible</strong> — se dobla con el movimiento natural del pie.</span></li>
         <li><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 12h18M3 6h18M3 18h18"/></svg><span><strong>Punto ajustado</strong> — envolvente pero transpirable, sin costuras que rocen.</span></li>
       </ul>
-
-      <a href="https://wa.me/5491178175503?text=Hola%2C%20quiero%20consultar%20por%20las%20Aconcagua%20NOCHE" target="_blank" rel="noopener" class="btn-primary">
-        <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18a7.9 7.9 0 0 1-4.02-1.1l-.29-.17-2.99.79.8-2.92-.19-.3A7.93 7.93 0 1 1 12 20zm4.36-5.86c-.24-.12-1.4-.69-1.62-.77-.22-.08-.38-.12-.54.12-.16.24-.62.77-.76.93-.14.16-.28.18-.52.06-.24-.12-1-.37-1.9-1.17-.7-.62-1.18-1.39-1.32-1.63-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.47-.4-.4-.54-.41h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.4-.57 1.6-1.12.2-.55.2-1.02.14-1.12-.06-.1-.22-.16-.46-.28z"/></svg>
-        CONSULTAR POR WHATSAPP
-      </a>
-      <div class="detail-note">Coordinamos talle, color y entrega directo por WhatsApp.</div>
 
       <div class="accordion">
         <details class="acc-item" open>
@@ -394,7 +526,7 @@ h1,h2,h3{text-wrap:balance;}
         </details>
         <details class="acc-item">
           <summary>Envío y pagos<span class="acc-plus"></span></summary>
-          <div class="acc-body">Coordinamos envío y forma de pago caso por caso, directo por WhatsApp. <a href="preguntas-frecuentes.html#envios">Ver más</a>.</div>
+          <div class="acc-body">Enviamos a todo el país por Correo Argentino, a domicilio o a sucursal: el costo se suma al total y lo ves arriba antes de pedir. <span data-si-retiro>También podés retirarlo sin costo en <span data-retiro-zona>Ciudad Evita, La Matanza</span>. </span>Pagás por transferencia: te mostramos el alias al confirmar el pedido. <a href="preguntas-frecuentes.html#envios">Ver costos por zona</a>.</div>
         </details>
         <details class="acc-item">
           <summary>Cambios y devoluciones<span class="acc-plus"></span></summary>
@@ -530,5 +662,6 @@ h1,h2,h3{text-wrap:balance;}
 })();
 </script>
 <script src="precios.js"></script>
+<script src="envios.js"></script>
 </body>
 </html>
