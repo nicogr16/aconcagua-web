@@ -162,12 +162,22 @@ var ENVIO_ZONA_NOMBRES = {
     { id: 'calle',         grupo: 'domicilio', texto: 'Calle',                auto: 'address-line1', max: 70, ancho: 't4' },
     { id: 'altura',        grupo: 'domicilio', texto: 'Número',               max: 8,  ancho: 't2', ayuda: 'o S/N' },
     { id: 'piso',          grupo: 'domicilio', texto: 'Piso, depto o referencia (opcional)', auto: 'address-line2', max: 40, opcional: true },
-    { id: 'sucursal',      grupo: 'sucursal',  texto: 'Sucursal del Correo donde lo retirás', ayuda: 'Nombre de la sucursal, o calle y localidad', max: 120 },
+    { id: 'sucursal',      grupo: 'sucursal',  texto: 'Sucursal del Correo donde lo retirás', max: 120 },
     { id: 'observaciones', grupo: 'todos',     texto: 'Observaciones (opcional)', max: 200, area: true, opcional: true }
   ];
 
   function bloqueDatos() {
     var campos = CAMPOS.map(function (c) {
+      /* La sucursal se elige con el buscador; el valor viaja en un campo oculto */
+      if (c.id === 'sucursal') {
+        return '<div class="ped-input ped-suc" data-grupo="sucursal"><span id="suc-titulo">' + c.texto + '</span>' +
+          '<div class="ped-suc-buscar"><input type="search" data-suc-texto aria-labelledby="suc-titulo" aria-describedby="suc-estado" ' +
+          'placeholder="Código postal, localidad o calle" autocomplete="off" enterkeyhint="search" maxlength="60">' +
+          '<button type="button" class="ped-ubicacion">Usar mi ubicación</button></div>' +
+          '<p class="ped-suc-estado" id="suc-estado" aria-live="polite"></p>' +
+          '<ul class="ped-suc-lista" hidden></ul><div class="ped-suc-elegida" hidden></div>' +
+          '<input type="hidden" name="sucursal"></div>';
+      }
       var atributos = ' name="' + c.id + '" maxlength="' + c.max + '"' +
         (c.auto ? ' autocomplete="' + c.auto + '"' : '') +
         (c.teclado ? ' inputmode="' + c.teclado + '"' : '') +
@@ -353,6 +363,225 @@ var ENVIO_ZONA_NOMBRES = {
     };
   }
 
+  var sucursalesPedidas;
+  function cargarSucursales() {
+    if (!sucursalesPedidas) {
+      sucursalesPedidas = pedirJSON('sucursales.json', {}, 20000).catch(function (e) {
+        sucursalesPedidas = null;
+        throw e;
+      });
+    }
+    return sucursalesPedidas;
+  }
+
+  /* El Correo publica todo en mayúsculas */
+  function bonito(s) {
+    return String(s).toLowerCase().replace(/(^|[\s(\/.-])([a-záéíóúñü])/g, function (t, a, b) { return a + b.toUpperCase(); });
+  }
+
+  function kilometros(a, b, c, d) {
+    var R = Math.PI / 180;
+    var x = Math.sin((c - a) * R / 2), y = Math.sin((d - b) * R / 2);
+    return 12742 * Math.asin(Math.sqrt(x * x + Math.cos(a * R) * Math.cos(c * R) * y * y));
+  }
+
+  function distancia(km) {
+    return km < 1 ? 'a ' + Math.max(1, Math.round(km * 10)) * 100 + ' m' : 'a ' + km.toFixed(km < 10 ? 1 : 0).replace('.', ',') + ' km';
+  }
+
+  /*
+    Buscador de sucursales del Correo (sucursales.json): por código postal o ubicación
+    muestra las más cercanas; por texto, las que coinciden. La ubicación del cliente
+    se usa solo en su navegador para ordenar la lista: no se envía ni se guarda.
+    Cada punto: [nombre, dirección, localidad, provincia, lat, lng, horario, tipo, destino]
+  */
+  function selectorSucursal(caja, destinoActual, alElegir) {
+    var texto = caja.querySelector('[data-suc-texto]');
+    var ubicar = caja.querySelector('.ped-ubicacion');
+    var estado = caja.querySelector('.ped-suc-estado');
+    var lista = caja.querySelector('.ped-suc-lista');
+    var elegida = caja.querySelector('.ped-suc-elegida');
+    var oculto = caja.querySelector('input[type="hidden"]');
+    var buscarCaja = caja.querySelector('.ped-suc-buscar');
+    var datos = null, manual = false, punto = null, reloj;
+
+    function cargar() {
+      if (datos || manual) { return; }
+      cargarSucursales().then(function (d) {
+        datos = d;
+        if (texto.value.trim()) { buscar(); }
+      }).catch(function () {
+        /* Sin la lista, el cliente la escribe a mano y elige el destino como siempre */
+        manual = true;
+        ubicar.hidden = true;
+        texto.placeholder = 'Nombre de la sucursal, o calle y localidad';
+        texto.maxLength = 120;
+        estado.textContent = 'No pudimos cargar la lista: escribí la sucursal donde querés retirarlo.';
+        oculto.value = texto.value.trim();
+        alElegir();
+      });
+    }
+
+    function elemento(etiqueta, clase, contenido) {
+      var el = document.createElement(etiqueta);
+      if (clase) { el.className = clase; }
+      if (contenido) { el.textContent = contenido; }
+      return el;
+    }
+
+    function lugarDe(s) {
+      return s[3] === 'C' ? 'CABA' : bonito(s[2]) + ', ' + datos.provincias[s[3]];
+    }
+
+    function ficha(s, km) {
+      var f = document.createDocumentFragment();
+      var titulo = elemento('strong', '', (s[7] ? 'Punto Correo ' : 'Sucursal ') + bonito(s[0]));
+      if (km != null) { titulo.appendChild(elemento('em', '', distancia(km))); }
+      f.appendChild(titulo);
+      f.appendChild(elemento('small', '', bonito(s[1]) + ' · ' + lugarDe(s)));
+      if (s[6]) { f.appendChild(elemento('small', '', 'Horario: ' + s[6].toLowerCase())); }
+      return f;
+    }
+
+    function elegir(s) {
+      punto = s;
+      oculto.value = ((s[7] ? 'PUNTO CORREO ' : 'SUCURSAL ') + s[0] + ' — ' + s[1] + ', ' + lugarDe(s)).slice(0, 120);
+      elegida.textContent = '';
+      var info = elemento('div');
+      info.appendChild(ficha(s));
+      var otra = elemento('button', 'ped-copiar', 'Cambiar');
+      otra.type = 'button';
+      otra.addEventListener('click', function () {
+        soltar();
+        alElegir();
+        texto.focus();
+      });
+      elegida.appendChild(info);
+      elegida.appendChild(otra);
+      elegida.hidden = false;
+      buscarCaja.hidden = lista.hidden = estado.hidden = true;
+      alElegir();
+    }
+
+    function soltar() {
+      punto = null;
+      oculto.value = '';
+      elegida.hidden = true;
+      buscarCaja.hidden = estado.hidden = false;
+      lista.hidden = !lista.children.length;
+    }
+
+    function mostrar(resultados, mensaje) {
+      estado.textContent = mensaje;
+      lista.textContent = '';
+      resultados.forEach(function (r) {
+        var li = document.createElement('li');
+        var boton = elemento('button');
+        boton.type = 'button';
+        boton.appendChild(ficha(r.s, r.km));
+        boton.addEventListener('click', function () { elegir(r.s); });
+        li.appendChild(boton);
+        lista.appendChild(li);
+      });
+      lista.hidden = !resultados.length;
+      lista.scrollTop = 0;
+    }
+
+    function cercanas(lat, lng, desdeDonde) {
+      var orden = datos.suc.filter(function (s) { return s[4] != null; }).map(function (s) {
+        return { s: s, km: kilometros(lat, lng, s[4], s[5]) };
+      }).sort(function (a, b) { return a.km - b.km; });
+      mostrar(orden.slice(0, 8), 'Las más cercanas ' + desdeDonde + ' (distancia aproximada, en línea recta):');
+    }
+
+    function porCodigo(cp) {
+      if (cp >= 1000 && cp <= 1499) {
+        mostrar([], 'En Capital el código postal no alcanza para ubicarte: tocá «Usar mi ubicación» o escribí tu barrio o calle.');
+        return;
+      }
+      /* Si ese código no figura, sirve uno pegado */
+      for (var d = 0; d <= 3; d++) {
+        var c = datos.cp[cp - d] || datos.cp[cp + d];
+        if (c) { cercanas(c[0], c[1], 'al código postal ' + cp); return; }
+      }
+      mostrar([], 'No tenemos ubicado ese código postal. Probá con el nombre de tu localidad.');
+    }
+
+    function buscar() {
+      var v = texto.value.trim();
+      if (!datos || manual) { return; }
+      var cp = /^(?:[a-z]\s?)?(\d{4})(?:\s?[a-z]{3})?$/i.exec(v);
+      if (cp) { porCodigo(Number(cp[1])); return; }
+      var q = plano(v);
+      if (q.length < 3) {
+        mostrar([], v ? 'Escribí al menos 3 letras, o los 4 números del código postal.' : '');
+        return;
+      }
+      var palabras = q.split(' ');
+      var destino = destinoActual();
+      var halladas = datos.suc.filter(function (s) {
+        if (!s.indice) { s.indice = plano([s[0], s[1], s[2], datos.provincias[s[3]], s[3] === 'C' ? 'caba' : ''].join(' ')); }
+        return palabras.every(function (p) { return s.indice.indexOf(p) >= 0; });
+      });
+      /* Primero las del destino elegido y las de la localidad escrita; sucursales antes que puntos */
+      var peso = function (s) {
+        return (s[8] === destino ? 0 : 2) + (plano(s[2]).indexOf(q) === 0 || plano(s[0]).indexOf(q) === 0 ? 0 : 1);
+      };
+      halladas.sort(function (a, b) { return peso(a) - peso(b) || a[7] - b[7] || a[0].localeCompare(b[0]); });
+      mostrar(halladas.slice(0, 30).map(function (s) { return { s: s }; }),
+        !halladas.length ? 'No encontramos sucursales con «' + v + '». Probá con tu código postal.'
+          : halladas.length > 30 ? 'Hay ' + halladas.length + ' resultados: sumá la calle o la localidad para afinar.'
+            : halladas.length === 1 ? '1 resultado:' : halladas.length + ' resultados:');
+    }
+
+    texto.addEventListener('focus', cargar);
+    texto.addEventListener('input', function () {
+      if (manual) { oculto.value = texto.value.trim(); return; }
+      cargar();
+      clearTimeout(reloj);
+      reloj = setTimeout(buscar, 200);
+    });
+    texto.addEventListener('keydown', function (e) {
+      if (e.key !== 'Enter' || manual) { return; }
+      e.preventDefault(); /* Enter busca; no envía el pedido */
+      clearTimeout(reloj);
+      buscar();
+      var primero = lista.querySelector('button');
+      if (primero) { primero.focus(); }
+    });
+
+    if (!navigator.geolocation) { ubicar.hidden = true; }
+    ubicar.addEventListener('click', function () {
+      estado.textContent = 'Buscando tu ubicación…';
+      ubicar.disabled = true;
+      var sinUbicacion = function () {
+        ubicar.disabled = false;
+        estado.textContent = 'No pudimos usar tu ubicación. Escribí tu código postal, localidad o calle.';
+      };
+      navigator.geolocation.getCurrentPosition(function (p) {
+        cargarSucursales().then(function (d) {
+          datos = d;
+          ubicar.disabled = false;
+          texto.value = '';
+          cercanas(p.coords.latitude, p.coords.longitude, 'a vos');
+        }).catch(sinUbicacion);
+      }, sinUbicacion, { timeout: 12000, maximumAge: 600000 });
+    });
+
+    return {
+      cargar: cargar,
+      manual: function () { return manual; },
+      destino: function () { return punto ? punto[8] : ''; },
+      foco: function () { return texto; },
+      limpiar: function () {
+        texto.value = '';
+        mostrar([], '');
+        soltar();
+        if (manual) { oculto.value = ''; }
+      }
+    };
+  }
+
   /* Correos mal tipeados más comunes */
   var DOMINIOS = {
     'gmial.com': 'gmail.com', 'gmai.com': 'gmail.com', 'gmal.com': 'gmail.com', 'gnail.com': 'gmail.com',
@@ -454,6 +683,8 @@ var ENVIO_ZONA_NOMBRES = {
     var datos = bloqueDatos();
     form.querySelector('.ped-resumen').insertAdjacentElement('beforebegin', datos);
     var localidad = buscador(form.elements.localidad, function () { return select.value; });
+    var sucursal = selectorSucursal(datos.querySelector('.ped-suc'), function () { return select.value; },
+      function () { limpiarError(); actualizar(); });
 
     function valor(nombreCampo) {
       var marcado = form.querySelector('input[name="' + nombreCampo + '"]:checked:not(:disabled)');
@@ -498,12 +729,15 @@ var ENVIO_ZONA_NOMBRES = {
         return { texto: 'Elegí tu talle para seguir.', foco: talles.querySelector('input:not(:disabled)') };
       }
       var entrega = valor('entrega');
-      if (entrega !== 'retiro' && !select.value) { return { texto: 'Elegí a dónde te lo enviamos.', foco: select }; }
+      /* Con la lista de sucursales, el destino sale de la sucursal elegida */
+      var porLista = entrega === 'sucursal' && !sucursal.manual();
+      if (entrega !== 'retiro' && !porLista && !select.value) { return { texto: 'Elegí a dónde te lo enviamos.', foco: select }; }
       for (var i = 0; i < CAMPOS.length; i++) {
         var c = CAMPOS[i];
         if (!pide(c, entrega)) { continue; }
         var v = dato(c.id);
-        var el = form.elements[c.id];
+        var el = c.id === 'sucursal' ? sucursal.foco() : form.elements[c.id];
+        if (!v && c.id === 'sucursal' && porLista) { return { texto: 'Buscá tu sucursal y tocá una de la lista.', foco: el }; }
         if (!v && !c.opcional) { return { texto: 'Completá este campo: ' + c.texto + '.', foco: el }; }
         if (!v) { continue; }
         var mal = revisar(c.id, v, dato('area'), select.value);
@@ -516,11 +750,14 @@ var ENVIO_ZONA_NOMBRES = {
     function actualizar() {
       var talle = valor('talle');
       var entrega = valor('entrega') || 'domicilio';
-      var envio = costoEnvio(entrega, select.value);
+      var porLista = entrega === 'sucursal' && !sucursal.manual();
+      if (porLista && sucursal.destino()) { select.value = sucursal.destino(); }
+      var envio = porLista && !sucursal.destino() ? null : costoEnvio(entrega, select.value);
       var agotado = modo === 'listo' && !disponibles.length;
       var tomaPedidos = modo !== 'consulta' && !agotado;
 
-      campoDestino.hidden = entrega === 'retiro';
+      if (entrega === 'sucursal') { sucursal.cargar(); }
+      campoDestino.hidden = entrega === 'retiro' || (porLista && modo !== 'consulta');
       CAMPOS.forEach(function (c) { form.elements[c.id].parentNode.hidden = !pide(c, entrega); });
       datos.hidden = !tomaPedidos;
       boton.hidden = !tomaPedidos;
@@ -547,13 +784,14 @@ var ENVIO_ZONA_NOMBRES = {
       ['domicilio', 'sucursal'].forEach(function (tipo) {
         var el = form.querySelector('[data-ped-costo="' + tipo + '"]');
         if (!el) { return; }
-        var c = costoEnvio(tipo, select.value);
+        var sinElegir = tipo === 'sucursal' && entrega === 'sucursal' && !sucursal.manual() && !sucursal.destino();
+        var c = sinElegir ? null : costoEnvio(tipo, select.value);
         el.textContent = c == null ? 'desde ' + pesos(desde(tipo)) : pesos(c);
       });
 
       form.querySelector('[data-ped-producto]').textContent = pesos(precio);
       form.querySelector('[data-ped-envio]').textContent =
-        entrega === 'retiro' ? 'Sin costo' : (envio == null ? 'Elegí el destino' : pesos(envio));
+        entrega === 'retiro' ? 'Sin costo' : (envio == null ? (porLista ? 'Elegí la sucursal' : 'Elegí el destino') : pesos(envio));
       form.querySelector('[data-ped-total]').textContent = envio == null ? '—' : pesos(precio + envio);
     }
 
@@ -688,6 +926,7 @@ var ENVIO_ZONA_NOMBRES = {
           ultimoEnviado = '';
           form.reset();
           localidad.limpiar();
+          sucursal.limpiar();
           actualizar();
           var panel = mostrarConfirmacion(registro);
           llevarVista(panel);

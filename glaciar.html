@@ -317,6 +317,24 @@ h1,h2,h3{text-wrap:balance;}
 .ped-listo .ped-alias{font-size:13px;color:var(--ink-soft);margin-bottom:14px;}
 .ped-listo .ped-pasos{font-size:13.5px;color:var(--ink-soft);line-height:1.55;margin-bottom:18px;}
 .ped-nuevo{display:block;margin:0 auto;font:inherit;font-size:13px;color:var(--accent-soft);background:none;border:0;border-bottom:1px solid currentColor;padding:4px 0;cursor:pointer;}
+/* Buscador de sucursales */
+.ped-suc-buscar{display:flex;flex-wrap:wrap;gap:8px;}
+.ped-suc-buscar[hidden],.ped-suc-estado[hidden],.ped-suc-lista[hidden],.ped-suc-elegida[hidden]{display:none;}
+.ped-suc-buscar input{flex:1 1 100%;}
+.ped-ubicacion{font:inherit;font-size:13px;font-weight:600;color:var(--accent-soft);background:var(--paper);border:1px solid var(--line-strong);border-radius:999px;padding:0 16px;min-height:40px;cursor:pointer;}
+.ped-ubicacion[hidden]{display:none;}
+.ped-ubicacion:disabled{opacity:.6;cursor:wait;}
+.ped-suc-estado{font-size:12.5px;color:var(--ink-soft);line-height:1.45;}
+.ped-suc-estado:empty{display:none;}
+.ped-suc-lista{list-style:none;margin:0;padding:4px;max-height:310px;overflow-y:auto;overscroll-behavior:contain;background:#fff;border:1px solid var(--line-strong);border-radius:10px;}
+.ped-suc-lista li + li{border-top:1px solid var(--line);}
+.ped-suc-lista button{display:block;width:100%;text-align:left;font:inherit;background:none;border:0;border-radius:7px;padding:10px;cursor:pointer;}
+.ped-suc-elegida{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;border:1px solid var(--accent);box-shadow:0 0 0 1px var(--accent);border-radius:10px;background:var(--paper);}
+.ped-suc-elegida > div{flex:1;min-width:0;}
+.ped-suc strong{display:block;font-size:14px;color:var(--ink);line-height:1.35;}
+.ped-suc strong em{font-style:normal;font-weight:600;font-size:12.5px;color:var(--accent-warm);margin-left:8px;white-space:nowrap;}
+.ped-suc small{display:block;font-size:12.5px;color:var(--ink-soft);line-height:1.45;margin-top:2px;}
+@media(hover:hover){.ped-suc-lista button:hover,.ped-ubicacion:hover{background:var(--paper-raised);}}
 /* Lista con búsqueda y avisos */
 .ped-input[data-grupo="domicilio"]{position:relative;}
 .ped-lista{position:absolute;top:100%;left:0;z-index:20;width:max(100%,250px);max-width:calc(100vw - 72px);max-height:230px;overflow-y:auto;margin:4px 0 0;padding:4px;list-style:none;background:#fff;border:1px solid var(--line-strong);border-radius:10px;box-shadow:var(--shadow);}
@@ -349,13 +367,16 @@ h1,h2,h3{text-wrap:balance;}
 @media(max-width:560px){
   .pedido{padding:20px 16px 16px;}
 }
+/* Botón de arrepentimiento (obligatorio, Disposición 954/2025) */
+.arrep-barra{display:inline-block;margin-left:10px;padding:2px 10px;border:1px solid var(--ink);border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.06em;color:var(--ink);white-space:nowrap;}
+.footer-col a.arrep-pie{display:inline-block;margin-top:6px;padding:10px 14px;border:1px solid var(--ink);border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.04em;color:var(--ink);}
 </style>
 </head>
 <body>
 <script>document.documentElement.classList.add('js-ready');</script>
 
 <a class="skip-link" href="#contenido">Saltar al contenido</a>
-<aside class="topbar" aria-label="Aviso"><span data-offer-any>PRECIO DE LANZAMIENTO: </span>PARES DESDE <strong data-price-min>$60.000</strong> — COMPRÁ ONLINE CON ENVÍO A TODO EL PAÍS</aside>
+<aside class="topbar" aria-label="Aviso"><span data-offer-any>PRECIO DE LANZAMIENTO: </span>PARES DESDE <strong data-price-min>$60.000</strong> — COMPRÁ ONLINE CON ENVÍO A TODO EL PAÍS <a class="arrep-barra" href="arrepentimiento.html">BOTÓN DE ARREPENTIMIENTO</a></aside>
 
 <header>
   <div class="container nav">
@@ -593,6 +614,7 @@ h1,h2,h3{text-wrap:balance;}
         <a href="preguntas-frecuentes.html#cambios">Cambios y devoluciones</a>
         <a href="preguntas-frecuentes.html">Preguntas frecuentes</a>
         <a href="https://wa.me/5491178175503?text=Hola%2C%20quiero%20consultar%20el%20estado%20de%20mi%20pedido" target="_blank" rel="noopener">Seguimiento de pedido</a>
+        <a class="arrep-pie" href="arrepentimiento.html">BOTÓN DE ARREPENTIMIENTO</a>
       </div>
       <div class="footer-col">
         <h2>MARCA</h2>
