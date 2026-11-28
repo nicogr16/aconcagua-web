@@ -5,14 +5,9 @@
   planilla de pedidos. El formulario de cada ficha y la tabla de envíos de
   Preguntas frecuentes se arman solos con estos datos.
 
-  De dónde salen los precios: MiCorreo (Correo Argentino), servicio PAQ.AR Clásico
-  (2 a 5 días hábiles), despachando desde la sucursal Ciudad Evita (CP 1778), un par
-  en bolsa de 30 x 20 x 10 cm y 0,8 kg. Cotizado el 27/11/2026 y redondeado hacia
-  arriba al próximo múltiplo de $1.000, para cubrir aumentos del Correo y el embalaje.
-  Lo que cobraba el Correo ese día (domicilio / sucursal):
-    amba 8.529 / 5.428 · centro 10.227 / 6.739 · norte 11.140 / 7.415 · lejos 11.221 / 7.745
-  Cuando el Correo actualice sus tarifas, cambiá los números de abajo
-  (sin puntos ni el símbolo $).
+  Los costos de envío son por un par, por Correo Argentino (PAQ.AR Clásico).
+  Cuando el Correo actualice sus tarifas, cambiá los números de abajo (sin puntos
+  ni el símbolo $) y también los de Codigo.gs, que controla los precios de los pedidos.
 */
 
 /*
@@ -42,7 +37,7 @@ var ENVIO_ZONAS = {
 
 /* ---- No hace falta tocar nada de acá para abajo ---- */
 
-/* Zona del Correo de cada destino, según lo que cotiza MiCorreo desde CP 1778 */
+/* Zona del Correo de cada destino */
 var ENVIO_DESTINOS = [
   ['caba',       'Ciudad de Buenos Aires (CABA)',                        'amba'],
   ['gba',        'Gran Buenos Aires (conurbano, Pilar, Escobar, Zárate…)', 'amba'],

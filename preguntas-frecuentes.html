@@ -539,7 +539,7 @@ h1,h2,h3{text-wrap:balance;}
   }
 
   if(location.hash){
-    var target = document.querySelector(location.hash);
+    var target = document.getElementById(location.hash.slice(1));
     if(target && target.classList.contains('faq-group')){
       var firstDetail = target.querySelector('details.faq-item');
       if(firstDetail) firstDetail.open = true;
