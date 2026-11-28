@@ -267,13 +267,20 @@ h1,h2,h3{text-wrap:balance;}
 .arrep-listo[hidden]{display:none;}
 .arrep-listo strong{color:var(--ink);font-size:22px;}
 @media(max-width:560px){.arrep{padding-left:20px;padding-right:20px;}}
+/* En celular la barra de arriba queda cargada: el botón pasa abajo a la izquierda, frente al de WhatsApp */
+@media(max-width:760px){
+  .topbar .arrep-barra{position:fixed;left:16px;bottom:26px;z-index:55;margin:0;padding:8px 12px;background:var(--paper);box-shadow:var(--shadow-sm);font-size:10px;line-height:1.4;text-decoration:none;}
+  .topbar .arrep-barra[aria-current]{display:none;}
+  footer{padding-bottom:84px;}
+  .footer-col a.arrep-pie{display:none;}
+}
 </style>
 </head>
 <body>
 <script>document.documentElement.classList.add('js-ready');</script>
 
 <a class="skip-link" href="#contenido">Saltar al contenido</a>
-<aside class="topbar" aria-label="Aviso"><span data-offer-any>PRECIO DE LANZAMIENTO: </span>PARES DESDE <strong data-price-min>$60.000</strong> — COMPRÁ ONLINE CON ENVÍO A TODO EL PAÍS <a class="arrep-barra" href="arrepentimiento.html">BOTÓN DE ARREPENTIMIENTO</a></aside>
+<aside class="topbar" aria-label="Aviso">COMPRÁ ONLINE CON ENVÍO A TODO EL PAÍS <a class="arrep-barra" aria-current="page" href="arrepentimiento.html">BOTÓN DE ARREPENTIMIENTO</a></aside>
 
 <header>
   <div class="container nav">
